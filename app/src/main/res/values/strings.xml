@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Nasa App</string>
+    <string name="photo_of_the_day">Photo of the Day</string>
+    <string name="api_error">You need API Key</string>
+    <string name="error_appstate">Error</string>
+    <string name="reload_appstate">Reload</string>
+    <string name="error_url_empty">Url is Empty</string>
 </resources>
