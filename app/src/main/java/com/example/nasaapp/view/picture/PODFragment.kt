@@ -1,5 +1,7 @@
 package com.example.nasaapp.view.picture
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,6 +42,16 @@ class PODFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getPODFromServer()
+        openWikiSearch()
+    }
+
+    private fun openWikiSearch() = with(binding) {
+        inputLayout.setEndIconOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://en.wikipedia.org/wiki/${inputEditText.text.toString()}")
+            }
+            startActivity(i)
+        }
     }
 
     private fun renderData(data: PODData?)  {

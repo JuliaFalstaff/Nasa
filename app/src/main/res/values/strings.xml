@@ -5,4 +5,6 @@
     <string name="error_appstate">Error</string>
     <string name="reload_appstate">Reload</string>
     <string name="error_url_empty">Url is Empty</string>
+    <string name="search_wiki">Wiki Search</string>
+    <string name="wiki_helper_text">Look up on Wiki</string>
 </resources>

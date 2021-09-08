@@ -13,4 +13,14 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="CustomOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="counterEnabled">true</item>
+        <item name="counterMaxLength">35</item>
+        <item name="boxCornerRadiusTopStart">@dimen/box_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/box_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/box_corner_radius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/box_corner_radius</item>
+        <item name="endIconMode">custom</item>
+        <item name="endIconDrawable">@drawable/ic_wikipedia</item>
+    </style>
 </resources>
