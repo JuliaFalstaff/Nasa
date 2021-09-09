@@ -52,7 +52,7 @@ class PODFragment : Fragment() {
     private fun openWikiSearch() = with(binding) {
         inputTextLayout.setEndIconOnClickListener {
             val i = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("https://en.wikipedia.org/wiki/${inputEditText.text.toString()}")
+                data = Uri.parse("$WIKI_URL${inputEditText.text.toString()}")
             }
             startActivity(i)
         }
@@ -122,5 +122,6 @@ class PODFragment : Fragment() {
 
     companion object {
         fun newInstance() = PODFragment()
+        private const val WIKI_URL = "https://en.wikipedia.org/wiki/"
     }
 }

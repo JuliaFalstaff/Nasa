@@ -43,15 +43,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/ic_no_photo_vector" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     <include
         android:id="@+id/includeBottomSheetLayout"
         layout="@layout/bottom_sheet_layout" />
-
-    <include
-        android:id="@+id/includeLoadingLayout"
-        layout="@layout/loading_layout" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -62,4 +58,9 @@
         app:layout_scrollFlags="scroll|enterAlways"
         app:backgroundTint="@color/colorPrimary"
         app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar"/>
+
+    <include
+        android:id="@+id/includeLoadingLayout"
+        layout="@layout/loading_layout" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

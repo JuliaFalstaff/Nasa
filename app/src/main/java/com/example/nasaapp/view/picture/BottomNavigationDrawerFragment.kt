@@ -27,7 +27,8 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         setNavigation()
     }
 
-    fun setNavigation() {
+    private fun setNavigation() {
+        binding.navigationView.itemIconTintList = null
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.app_bar_fav -> Toast.makeText(context, getString(R.string.favourite), Toast.LENGTH_SHORT).show()
@@ -47,6 +48,4 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
     companion object {
         fun newInstance() = BottomNavigationDrawerFragment()
     }
-
-
 }

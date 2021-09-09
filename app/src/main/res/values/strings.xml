@@ -11,4 +11,9 @@
     <string name="settings">Settings</string>
     <string name="earth_epic">Epic Earth Photo from Nasa</string>
     <string name="mars">Mars photo from Nasa</string>
+    <string name="yesterday">yesterday</string>
+    <string name="today">today</string>
+    <string name="the_day_before_yesterday">the day before yesterday</string>
+    <string name="example_description">This lovely starfield spans some four full moons.</string>
+    <string name="example_header">Two Clusters and a Comet</string>
 </resources>
