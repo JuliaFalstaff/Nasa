@@ -16,4 +16,9 @@
     <string name="the_day_before_yesterday">the day before yesterday</string>
     <string name="example_description">This lovely starfield spans some four full moons.</string>
     <string name="example_header">Two Clusters and a Comet</string>
+    <string name="galaxy_theme">Galaxy Theme</string>
+    <string name="mars_theme">Mars Theme</string>
+    <string name="moon_theme">Moon Theme</string>
+    <string name="default_theme">Default Theme</string>
+    <string name="apply_theme">Apply Theme</string>
 </resources>

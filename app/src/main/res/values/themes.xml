@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.NasaApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="NasaApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -22,5 +22,53 @@
         <item name="boxCornerRadiusBottomEnd">@dimen/box_corner_radius</item>
         <item name="endIconMode">custom</item>
         <item name="endIconDrawable">@drawable/ic_wikipedia</item>
+    </style>
+
+
+    <style name="MarsAppTheme" parent="NasaApp">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/light_purple</item>
+        <item name="colorPrimaryVariant">@color/light_red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/light_red</item>
+        <item name="colorSecondaryVariant">@color/light_ametist</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/light_red</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_explanation</item>
+    </style>
+
+    <style name="GalaxyAppTheme" parent="NasaApp">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/dark_navy_theme_main</item>
+        <item name="colorPrimaryDark">@color/navy_theme</item>
+        <item name="colorOnPrimary">@color/light_navy_theme</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/lightest_navy_theme</item>
+        <item name="colorSecondaryVariant">@color/dark_slate_theme</item>
+        <item name="colorOnSecondary">@color/green_theme</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/navy_theme</item>
+        <item name="android:textColor">@color/dark_white_theme</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_explanation</item>
+        <item name="android:background">@color/light_navy_theme</item>
+    </style>
+
+    <style name="MoonAppTheme" parent="NasaApp">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/dark_blue_grey</item>
+        <item name="colorPrimaryVariant">@color/accent_color_grey</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/another_primary_dark_blue</item>
+        <item name="colorSecondaryVariant">@color/dark_grey</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/accent_color_grey</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_explanation</item>
     </style>
 </resources>

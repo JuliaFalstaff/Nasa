@@ -1,6 +1,7 @@
 package com.example.nasaapp.view.picture
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -15,6 +16,7 @@ import com.example.nasaapp.databinding.FragmentPodBinding
 import com.example.nasaapp.model.PODData
 import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.view.MainActivity
+import com.example.nasaapp.view.settings.SettingsFragment
 import com.example.nasaapp.viewmodel.PODViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -101,12 +103,21 @@ class PODFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_fav -> Toast.makeText(context, getString(R.string.favourite), Toast.LENGTH_SHORT).show()
-            R.id.app_bar_settings -> Toast.makeText(context, getString(R.string.settings), Toast.LENGTH_SHORT).show()
+            R.id.app_bar_settings -> openSettingsFragment()
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance().show(requireActivity().supportFragmentManager, "TAG_DRAWER")
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun openSettingsFragment() {
+        activity?.supportFragmentManager?.apply {
+            beginTransaction()
+                    .replace(R.id.container, SettingsFragment.newInstance())
+                    .addToBackStack("")
+                    .commitAllowingStateLoss()
+        }
     }
 
     private fun setBottomAppBar() {
@@ -123,5 +134,10 @@ class PODFragment : Fragment() {
     companion object {
         fun newInstance() = PODFragment()
         private const val WIKI_URL = "https://en.wikipedia.org/wiki/"
+        private const val THEME_SHARED_PREFERENCE = "THEME"
+        private const val DefaultTheme = 0
+        private const val GalaxyTheme = 1
+        private const val MarsTheme = 2
+        private const val MoonTheme = 3
     }
 }
