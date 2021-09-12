@@ -10,4 +10,5 @@
     <dimen name="layout_width_bottom_sheet">25dp</dimen>
     <dimen name="peek_height_bottom_sheet_behavior">200dp</dimen>
     <dimen name="text_size_header">25sp</dimen>
+    <dimen name="large_components_corner_size">15dp</dimen>
 </resources>
