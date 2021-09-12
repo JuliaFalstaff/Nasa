@@ -7,9 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.RadioGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.nasaapp.R
 import com.example.nasaapp.databinding.FragmentSettingsBinding
+import com.example.nasaapp.view.MainActivity
+import com.google.android.material.radiobutton.MaterialRadioButton
 
 class SettingsFragment : Fragment() {
 
@@ -22,13 +26,12 @@ class SettingsFragment : Fragment() {
         private const val MoonTheme = 3
     }
 
-    private var isCheckedButton: Boolean = false
+
     var _binding: FragmentSettingsBinding? = null
     val binding: FragmentSettingsBinding
         get() {
             return _binding!!
         }
-
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -40,75 +43,51 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        activity?.let {
-//            it.getPreferences(Context.MODE_PRIVATE)?.getInt(THEME_SHARED_PREFERENCE, DefaultTheme)?.let { button ->
-//                binding.radioButtonGroup.check(button)
-//            }
-//        }
-
+        
+       val btn =  binding.radioButtonGroup.checkedRadioButtonId
+        binding.radioButtonGroup.check(btn)
         chooseTheme()
-
-    }
-
-
-
-
-
-
-
-    private fun chooseAppTheme() {
-        binding.buttonApplyTheme.setOnClickListener {
-            chooseTheme()
-//            activity?.recreate()
-        }
     }
 
     private fun chooseTheme() = with(binding) {
         radioButtonGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.radioButtonGalaxyTheme -> {
-                    isCheckedButton = true
+                    radioButtonGalaxyTheme.isChecked = true
                     saveSharedPreferences(GalaxyTheme)
-//                    activity?.recreate()
                 }
                 R.id.radioButtonMarsTheme -> {
-                    isCheckedButton = true
+                    radioButtonMarsTheme.isChecked = true
                     saveSharedPreferences(MarsTheme)
-//                    activity?.recreate()
                 }
                 R.id.radioButtonMoonTheme -> {
-                    isCheckedButton = true
+                    radioButtonMoonTheme.isChecked = true
                     saveSharedPreferences(MoonTheme)
-//                    activity?.recreate()
                 }
                 R.id.radioButtonDefaultTheme -> {
-                    isCheckedButton = true
+                    radioButtonDefaultTheme.isChecked = true
                     saveSharedPreferences(DefaultTheme)
-//                    activity?.recreate()
                 }
-
             }
         }
     }
 
-
-private fun saveSharedPreferences(code: Int) {
-    val sharedPref = activity?.let {
-        it.getSharedPreferences(THEME_SHARED_PREFERENCE, Context.MODE_PRIVATE)
-                .edit()
-                .putInt(THEME_SHARED_PREFERENCE, code)
-                .apply()
+    private fun saveSharedPreferences(code: Int) {
+        val sharedPref = activity?.let {
+            it.getSharedPreferences(THEME_SHARED_PREFERENCE, Context.MODE_PRIVATE)
+                    .edit()
+                    .putInt(THEME_SHARED_PREFERENCE, code)
+                    .apply()
+            it.supportFragmentManager.popBackStack()
             it.recreate()
+        }
     }
 
-}
 
-
-override fun onDestroy() {
-    super.onDestroy()
-    _binding = null
-}
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
 
 

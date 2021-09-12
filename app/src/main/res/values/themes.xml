@@ -24,6 +24,15 @@
         <item name="endIconDrawable">@drawable/ic_wikipedia</item>
     </style>
 
+    <style name="BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="android:colorBackground">@color/dark_grey</item>
+
+    </style>
+
+    <style name="BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="backgroundTint">@color/colorPrimary</item>
+    </style>
+
 
     <style name="MarsAppTheme" parent="NasaApp">
         <!-- Primary brand color. -->

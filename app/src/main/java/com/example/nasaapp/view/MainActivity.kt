@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     companion object {
         private const val THEME_SHARED_PREFERENCE = "THEME"
         private const val DefaultTheme = 0
@@ -39,5 +38,4 @@ class MainActivity : AppCompatActivity() {
         private const val MarsTheme = 2
         private const val MoonTheme = 3
     }
-
 }
