@@ -36,7 +36,16 @@
     <color name="light_red">#E32636</color>
     <color name="light_purple">#AB274F</color>
     <color name="light_ametist">#F19CBB</color>
-    <color name="mars_background">#FF9A7B</color>
-    <color name="moon_background">#FFC473</color>
-    <color name="galaxy_background">#7C71D8</color>
+    <color name="galaxy_primary">#04346C</color>
+    <color name="galaxy_color_on_primary">#6899D3</color>
+    <color name="galaxy_secondary">#274E7D</color>
+    <color name="galaxy_secondary_variant">#880e4f</color>
+    <color name="galaxy_color_on_secondary">@color/white</color>
+    <color name="mars_primary">#e53935</color>
+    <color name="mars_primary_variant">#ba000d</color>
+    <color name="mars_secondary">#dd2c00</color>
+    <color name="mars_secondary_variant">#a30000</color>
+
+
 </resources>
+

@@ -16,62 +16,19 @@
         <item name="radioButtonStyle">@style/RadioGroupStyle</item>
         <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
         <item name="bottomAppBarStyle">@style/BottomAppBar</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationView</item>
         <item name="fontFamily">@font/aldrich_default</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="CustomOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="counterEnabled">true</item>
-        <item name="counterMaxLength">35</item>
-        <item name="boxCornerRadiusTopStart">@dimen/box_corner_radius</item>
-        <item name="boxCornerRadiusTopEnd">@dimen/box_corner_radius</item>
-        <item name="boxCornerRadiusBottomStart">@dimen/box_corner_radius</item>
-        <item name="boxCornerRadiusBottomEnd">@dimen/box_corner_radius</item>
-        <item name="endIconMode">custom</item>
-        <item name="endIconDrawable">@drawable/ic_wikipedia</item>
-    </style>
-
-    <style name="BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet">
-        <item name="backgroundTint">@color/white_bottom_sheet</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.App.LargeComponent</item>
-    </style>
-
-    <style name="BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
-        <item name="backgroundTint">?attr/colorSecondary</item>
-    </style>
-
-    <style name="BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
-        <item name="backgroundTint">?attr/colorSecondary</item>
-    </style>
-
-    <style name="RadioGroupStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
-        <item name="backgroundTint">?attr/colorSecondary</item>
-    </style>
-
-    <style name="BottomSheetHeader" parent="Widget.MaterialComponents.BottomSheet">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/text_size_header</item>
-
-    </style>
-
-    <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
-        <item name="cornerFamily">cut</item>
-        <item name="cornerSize">@dimen/large_components_corner_size</item>
-    </style>
-
-
-
-
-
 
     <style name="MarsAppTheme" parent="NasaApp">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#FF0000</item>
-        <item name="colorPrimaryVariant">#BF4330</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/mars_primary</item>
+        <item name="colorPrimaryVariant">@color/mars_primary_variant</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#A61700</item>
-        <item name="colorSecondaryVariant">#FF9A7B</item>
+        <item name="colorSecondary">@color/mars_secondary</item>
+        <item name="colorSecondaryVariant">@color/mars_secondary_variant</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
@@ -81,42 +38,19 @@
         <item name="radioButtonStyle">@style/RadioGroupStyle</item>
         <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
         <item name="bottomAppBarStyle">@style/BottomAppBar</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationView</item>
         <item name="fontFamily">@font/amiko_mars</item>
-        <item name="colorSurface">@color/white_bottom_sheet</item>
-<!--        <item name="android:textColor">?colorSecondary</item>-->
     </style>
-
-<!--    <style name="GalaxyAppTheme" parent="NasaApp">-->
-<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
-<!--        <item name="colorPrimary">@color/dark_navy_theme_main</item>-->
-<!--        <item name="colorPrimaryDark">@color/navy_theme</item>-->
-<!--        <item name="colorOnPrimary">@color/light_navy_theme</item>-->
-<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
-<!--        <item name="colorSecondary">@color/lightest_navy_theme</item>-->
-<!--        <item name="colorSecondaryVariant">@color/dark_slate_theme</item>-->
-<!--        <item name="colorOnSecondary">@color/green_theme</item>-->
-<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
-<!--        <item name="android:statusBarColor" tools:targetApi="l">@color/navy_theme</item>-->
-<!--        <item name="android:textColor">@color/dark_white_theme</item>-->
-<!--        <item name="android:textStyle">bold</item>-->
-<!--        <item name="android:textSize">@dimen/text_size_explanation</item>-->
-<!--        <item name="android:background">@color/light_navy_theme</item>-->
-<!--        <item name="textInputStyle">@style/CustomOutlinedBox</item>-->
-<!--        <item name="radioButtonStyle">@style/RadioGroupStyle</item>-->
-<!--        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>-->
-<!--        <item name="bottomAppBarStyle">@style/BottomAppBar</item>-->
-<!--        <item name="fontFamily">@font/antic_slab_galaxy</item>-->
-<!--    </style>-->
 
         <style name="GalaxyAppTheme" parent="NasaApp">
             <!-- Primary brand color. -->
-            <item name="colorPrimary">#04346C</item>
+            <item name="colorPrimary">@color/galaxy_primary</item>
             <item name="colorPrimaryDark">@color/navy_theme</item>
-            <item name="colorOnPrimary">#6899D3</item>
+            <item name="colorOnPrimary">@color/galaxy_color_on_primary</item>
             <!-- Secondary brand color. -->
-            <item name="colorSecondary">#274E7D</item>
-            <item name="colorSecondaryVariant">#552781</item>
-            <item name="colorOnSecondary">#8D41D6</item>
+            <item name="colorSecondary">@color/galaxy_secondary</item>
+            <item name="colorSecondaryVariant">@color/galaxy_secondary_variant</item>
+            <item name="colorOnSecondary">@color/galaxy_color_on_secondary</item>
             <!-- Status bar color. -->
             <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
             <item name="android:textStyle">bold</item>
@@ -125,8 +59,8 @@
             <item name="radioButtonStyle">@style/RadioGroupStyle</item>
             <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
             <item name="bottomAppBarStyle">@style/BottomAppBar</item>
+            <item name="bottomNavigationStyle">@style/BottomNavigationView</item>
             <item name="fontFamily">@font/antic_slab_galaxy</item>
-
         </style>
 
     <style name="MoonAppTheme" parent="NasaApp">
@@ -146,6 +80,68 @@
         <item name="radioButtonStyle">@style/RadioGroupStyle</item>
         <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
         <item name="bottomAppBarStyle">@style/BottomAppBar</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationView</item>
         <item name="fontFamily">@font/coda_moon</item>
+    </style>
+
+    <style name="CustomOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="counterEnabled">true</item>
+        <item name="counterMaxLength">35</item>
+        <item name="boxCornerRadiusTopStart">@dimen/box_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/box_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/box_corner_radius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/box_corner_radius</item>
+        <item name="endIconMode">custom</item>
+        <item name="endIconDrawable">@drawable/ic_wikipedia</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="backgroundTint">@color/white_bottom_sheet</item>
+        <item name="behavior_hideable">true</item>
+        <item name="behavior_peekHeight">@dimen/peek_height_bottom_sheet_behavior</item>
+        <item name="layout_behavior"> com.google.android.material.bottomsheet.BottomSheetBehavior</item>
+
+    </style>
+
+    <style name="BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+    </style>
+
+    <style name="BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:layout_marginTop">@dimen/margin_start_navigation_view</item>
+        <item name="android:layout_marginStart">@dimen/margin_start_navigation_view</item>
+        <item name="android:layout_marginEnd">@dimen/margin_start_navigation_view</item>
+    </style>
+
+    <style name="RadioGroupStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+    </style>
+
+    <style name="BottomSheetHeader" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_header</item>
+        <item name="android:layout_marginTop">@dimen/margin_4dp</item>
+        <item name="android:paddingStart">@dimen/padding_10dp</item>
+        <item name="android:paddingEnd">@dimen/padding_10dp</item>
+    </style>
+
+    <style name="BottomSheetLine" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="android:background">@color/dark_grey</item>
+        <item name="android:layout_marginTop">@dimen/margin_4dp</item>
+        <item name="android:layout_width">@dimen/layout_width_bottom_sheet</item>
+        <item name="android:layout_height">@dimen/layout_height_bottom_sheet</item>
+    </style>
+
+    <style name="BottomSheetDescription" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="android:textSize">@dimen/text_size_explanation</item>
+        <item name="android:paddingStart">@dimen/padding_10dp</item>
+        <item name="android:paddingEnd">@dimen/padding_10dp</item>
+        <item name="android:textColor">@color/dark_blue_grey</item>
+    </style>
+
+    <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">@dimen/large_components_corner_size</item>
     </style>
 </resources>

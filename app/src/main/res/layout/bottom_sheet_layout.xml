@@ -3,19 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomSheetContainer"
+    android:background="@color/white_bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/BottomSheetStyle"
     app:behavior_hideable="true"
     app:behavior_peekHeight="@dimen/peek_height_bottom_sheet_behavior"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <View
         android:id="@+id/bottomSheetLine"
-        android:layout_width="@dimen/layout_width_bottom_sheet"
-        android:layout_height="@dimen/layout_height_bottom_sheet"
-        android:layout_marginTop="@dimen/margin_4dp"
-        android:background="@color/dark_grey"
+        style="@style/BottomSheetLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,9 +22,6 @@
         style="@style/BottomSheetHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_4dp"
-        android:paddingStart="@dimen/padding_10dp"
-        android:paddingEnd="@dimen/padding_10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bottomSheetLine"
@@ -35,11 +29,9 @@
 
     <TextView
         android:id="@+id/bottomSheetDescription"
+        style="@style/BottomSheetDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/padding_10dp"
-        android:paddingEnd="@dimen/padding_10dp"
-        android:textSize="@dimen/text_size_explanation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bottomSheetDescriptionHeader"

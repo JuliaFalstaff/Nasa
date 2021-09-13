@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.nasaapp.R
 import com.example.nasaapp.databinding.BottomNavigationLayoutBinding
+import com.example.nasaapp.view.settings.SettingsFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
@@ -32,7 +33,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.app_bar_fav -> Toast.makeText(context, getString(R.string.favourite), Toast.LENGTH_SHORT).show()
-                R.id.app_bar_settings -> Toast.makeText(context, getString(R.string.settings), Toast.LENGTH_SHORT).show()
+                R.id.app_bar_settings -> openSettingsFragment()
                 R.id.app_bar_earth_epic -> Toast.makeText(context, getString(R.string.earth_epic), Toast.LENGTH_SHORT).show()
                 R.id.app_bar_mars -> Toast.makeText(context, getString(R.string.mars), Toast.LENGTH_SHORT).show()
             }
@@ -43,6 +44,15 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun openSettingsFragment() {
+        activity?.supportFragmentManager?.apply {
+            beginTransaction()
+                    .replace(R.id.container, SettingsFragment.newInstance())
+                    .addToBackStack("")
+                    .commitAllowingStateLoss()
+        }
     }
 
     companion object {
