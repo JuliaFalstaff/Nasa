@@ -41,10 +41,10 @@
     <color name="galaxy_secondary">#274E7D</color>
     <color name="galaxy_secondary_variant">#880e4f</color>
     <color name="galaxy_color_on_secondary">@color/white</color>
-    <color name="mars_primary">#e53935</color>
+    <color name="mars_primary">#f44336</color>
     <color name="mars_primary_variant">#ba000d</color>
-    <color name="mars_secondary">#dd2c00</color>
-    <color name="mars_secondary_variant">#a30000</color>
+    <color name="mars_secondary">#ff5722</color>
+    <color name="mars_secondary_variant">#c41c00</color>
 
 
 </resources>
