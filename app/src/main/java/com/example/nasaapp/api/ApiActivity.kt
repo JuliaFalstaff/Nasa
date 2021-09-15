@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nasaapp.R
 import com.example.nasaapp.databinding.ActivityApiBinding
+import com.example.nasaapp.view.FavouriteFragment
+import com.example.nasaapp.view.picture.PODFragment
+import com.example.nasaapp.view.settings.SettingsFragment
 
 class ApiActivity : AppCompatActivity() {
 
@@ -17,6 +20,31 @@ class ApiActivity : AppCompatActivity() {
         binding.tabLayout.setupWithViewPager(binding.viewPager)
 
         initTabIcons()
+
+        initBottomNavigationView()
+    }
+
+    private fun initBottomNavigationView() {
+        binding.bottomApiNavigationView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.action_home -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, PODFragment()).commit()
+                    true
+                }
+                R.id.action_fav -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, FavouriteFragment()).commit()
+                    true
+                }
+                R.id.action_settings -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, SettingsFragment()).commit()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun initTabIcons() = with(binding) {

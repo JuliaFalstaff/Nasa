@@ -34,8 +34,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
             when (it.itemId) {
                 R.id.app_bar_fav -> Toast.makeText(context, getString(R.string.favourite), Toast.LENGTH_SHORT).show()
                 R.id.app_bar_settings -> openSettingsFragment()
-                R.id.app_bar_earth_epic -> Toast.makeText(context, getString(R.string.earth_epic), Toast.LENGTH_SHORT).show()
-                R.id.app_bar_mars -> Toast.makeText(context, getString(R.string.mars), Toast.LENGTH_SHORT).show()
+
             }
             true
         }
