@@ -1,19 +1,11 @@
-package com.example.nasaapp.view
+package com.example.nasaapp.view.favourite
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.nasaapp.R
 import com.example.nasaapp.databinding.FragmentSettingsBinding
-import com.example.nasaapp.view.MainActivity
-import com.google.android.material.radiobutton.MaterialRadioButton
 
 class FavouriteFragment : Fragment() {
 

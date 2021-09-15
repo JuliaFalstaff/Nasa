@@ -11,12 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.nasaapp.R
-import com.example.nasaapp.api.ApiActivity
 import com.example.nasaapp.databinding.FragmentPodBinding
 import com.example.nasaapp.model.PODData
 import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.view.MainActivity
+import com.example.nasaapp.view.bottomnavigationdrawer.BottomNavigationDrawerFragment
 import com.example.nasaapp.view.settings.SettingsFragment
+import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 import com.example.nasaapp.viewmodel.PODViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -102,9 +103,9 @@ class PODFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(context, getString(R.string.favourite), Toast.LENGTH_SHORT).show()
-            R.id.app_bar_settings -> openSettingsFragment()
-            R.id.app_bar_solar -> startActivity(Intent(activity, ApiActivity::class.java))
+            R.id.app_bar_fav -> Toast.makeText(context, R.string.favourite, Toast.LENGTH_SHORT).show()
+            R.id.app_bar_settings -> openSettingsFragment(SettingsFragment())
+            R.id.app_bar_solar -> openSettingsFragment(SolarSystemFragment())
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance().show(requireActivity().supportFragmentManager, "TAG_DRAWER")
             }
@@ -112,10 +113,10 @@ class PODFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun openSettingsFragment() {
+    private fun openSettingsFragment(fragment: Fragment) {
         activity?.supportFragmentManager?.apply {
             beginTransaction()
-                    .replace(R.id.container, SettingsFragment.newInstance())
+                    .replace(R.id.container, fragment)
                     .addToBackStack("")
                     .commitAllowingStateLoss()
         }

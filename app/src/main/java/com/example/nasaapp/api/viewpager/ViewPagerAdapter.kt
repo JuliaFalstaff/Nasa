@@ -1,9 +1,11 @@
-package com.example.nasaapp.api
+package com.example.nasaapp.api.viewpager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.nasaapp.R
+import com.example.nasaapp.api.EarthFragment
+import com.example.nasaapp.api.MarsFragment
+import com.example.nasaapp.api.MoonFragment
 
 class ViewPagerAdapter(private val fragmentManager: FragmentManager) :
         FragmentStatePagerAdapter(fragmentManager) {
@@ -31,10 +33,6 @@ class ViewPagerAdapter(private val fragmentManager: FragmentManager) :
             else -> "Earth"
         }
     }
-
-
-
-
 
     companion object {
         private const val EARTH_FRAGMENT = 0

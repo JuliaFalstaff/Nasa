@@ -1,13 +1,15 @@
-package com.example.nasaapp.view.picture
+package com.example.nasaapp.view.bottomnavigationdrawer
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.nasaapp.R
 import com.example.nasaapp.databinding.BottomNavigationLayoutBinding
 import com.example.nasaapp.view.settings.SettingsFragment
+import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
@@ -33,8 +35,8 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.app_bar_fav -> Toast.makeText(context, getString(R.string.favourite), Toast.LENGTH_SHORT).show()
-                R.id.app_bar_settings -> openSettingsFragment()
-
+                R.id.app_bar_settings -> openFragment(SettingsFragment())
+                R.id.app_bar_solar -> openFragment(SolarSystemFragment())
             }
             true
         }
@@ -45,10 +47,10 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         _binding = null
     }
 
-    private fun openSettingsFragment() {
+    private fun openFragment(fragment: Fragment) {
         activity?.supportFragmentManager?.apply {
             beginTransaction()
-                    .replace(R.id.container, SettingsFragment.newInstance())
+                    .replace(R.id.container, fragment)
                     .addToBackStack("")
                     .commitAllowingStateLoss()
         }

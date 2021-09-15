@@ -100,7 +100,6 @@
         <item name="behavior_hideable">true</item>
         <item name="behavior_peekHeight">@dimen/peek_height_bottom_sheet_behavior</item>
         <item name="layout_behavior"> com.google.android.material.bottomsheet.BottomSheetBehavior</item>
-
     </style>
 
     <style name="BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar.Colored">

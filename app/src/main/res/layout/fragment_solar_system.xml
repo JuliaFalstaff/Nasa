@@ -23,5 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:layout_gravity="bottom"
+        app:backgroundTint="?colorSecondary"
+        app:itemTextColor="?colorOnSecondary"
         app:menu="@menu/menu_bottom_navigation"/>
 </FrameLayout>

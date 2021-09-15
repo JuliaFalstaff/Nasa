@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nasaapp.BuildConfig
-import com.example.nasaapp.R
 import com.example.nasaapp.model.PODData
 import com.example.nasaapp.model.data.PODServerResponseData
 import com.example.nasaapp.model.repository.PODRetrofitImpl
@@ -52,7 +51,6 @@ class PODViewModel(private val liveDataToObserve: MutableLiveData<PODData> = Mut
             )
         }
     }
-
 
     companion object {
         private const val API_ERROR = "You need API Key"
