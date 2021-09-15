@@ -12,6 +12,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent40Alfa">#66D81B60</color>
     <color name="color_gray">#66000000</color>
 
 
@@ -45,7 +46,5 @@
     <color name="mars_primary_variant">#ba000d</color>
     <color name="mars_secondary">#ff5722</color>
     <color name="mars_secondary_variant">#c41c00</color>
-
-
 </resources>
 
