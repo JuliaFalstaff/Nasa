@@ -22,4 +22,7 @@
     <string name="default_theme">Default Theme</string>
     <string name="apply_theme">Apply Theme</string>
     <string name="choose_theme">Choose your theme</string>
+    <string name="earth_tab">Earth</string>
+    <string name="mars_tab">Mars</string>
+    <string name="moon_tab">Moon</string>
 </resources>

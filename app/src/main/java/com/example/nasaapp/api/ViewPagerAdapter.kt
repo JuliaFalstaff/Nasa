@@ -3,6 +3,7 @@ package com.example.nasaapp.api
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.example.nasaapp.R
 
 class ViewPagerAdapter(private val fragmentManager: FragmentManager) :
         FragmentStatePagerAdapter(fragmentManager) {
@@ -21,6 +22,18 @@ class ViewPagerAdapter(private val fragmentManager: FragmentManager) :
             else -> fragments[EARTH_FRAGMENT]
         }
     }
+
+    override fun getPageTitle(position: Int): String {
+        return when (position) {
+            0 -> "Earth"
+            1 -> "Mars"
+            2 -> "Moon"
+            else -> "Earth"
+        }
+    }
+
+
+
 
 
     companion object {
