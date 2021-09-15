@@ -13,4 +13,5 @@
     <dimen name="large_components_corner_size">15dp</dimen>
     <dimen name="margin_start_navigation_view">8dp</dimen>
     <dimen name="marginBottomIndicator">100dp</dimen>
+    <dimen name="drawablePadding">20dp</dimen>
 </resources>

@@ -20,8 +20,12 @@ class ApiActivity : AppCompatActivity() {
     }
 
     private fun initTabIcons() = with(binding) {
-        tabLayout.getTabAt(0)?.setIcon(R.drawable.ic_earth)
-        tabLayout.getTabAt(1)?.setIcon(R.drawable.ic_mars)
-        tabLayout.getTabAt(2)?.setIcon(R.drawable.ic_system)  //TODO заменить на луну
+        binding.tabLayout.getTabAt(0)?.customView =
+            layoutInflater.inflate(R.layout.activity_api_tablayout_earth,null)
+        binding.tabLayout.getTabAt(1)?.customView =
+            layoutInflater.inflate(R.layout.activity_api_tablayout_mars,null)
+        binding.tabLayout.getTabAt(2)?.customView =
+            layoutInflater.inflate(R.layout.activity_api_tablayout_moon,null)
     }
+
 }
