@@ -4,13 +4,13 @@
 
     <item
         android:id="@+id/app_bar_earth_epic"
-        android:icon="@drawable/ic_earth"
+        android:icon="@drawable/ic_earth_new"
         android:title="@string/earth_epic"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/app_bar_mars"
-        android:icon="@drawable/ic_mars"
+        android:icon="@drawable/ic_mars_new"
         android:title="@string/mars"
         app:showAsAction="always" />
 

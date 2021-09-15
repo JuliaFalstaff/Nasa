@@ -1,7 +1,6 @@
 package com.example.nasaapp.view.picture
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -12,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.nasaapp.R
+import com.example.nasaapp.api.ApiActivity
 import com.example.nasaapp.databinding.FragmentPodBinding
 import com.example.nasaapp.model.PODData
 import com.example.nasaapp.utils.showSnackBar
@@ -34,9 +34,9 @@ class PODFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentPodBinding.inflate(inflater)
         return binding.root
@@ -65,7 +65,7 @@ class PODFragment : Fragment() {
             is PODData.Error -> {
                 binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
                 binding.main.showSnackBar(getString(R.string.error_appstate),
-                    getString(R.string.reload_appstate), {viewModel.getPODFromServer()})
+                        getString(R.string.reload_appstate), { viewModel.getPODFromServer() })
             }
             is PODData.Loading -> {
                 binding.includeLoadingLayout.loadingLayout.visibility = View.VISIBLE
@@ -104,6 +104,7 @@ class PODFragment : Fragment() {
         when (item.itemId) {
             R.id.app_bar_fav -> Toast.makeText(context, getString(R.string.favourite), Toast.LENGTH_SHORT).show()
             R.id.app_bar_settings -> openSettingsFragment()
+            R.id.app_bar_solar -> startActivity(Intent(activity, ApiActivity::class.java))
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance().show(requireActivity().supportFragmentManager, "TAG_DRAWER")
             }
