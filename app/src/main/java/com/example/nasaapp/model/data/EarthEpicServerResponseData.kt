@@ -5,5 +5,6 @@ data class EarthEpicServerResponseData(
         val caption: String,
         val image: String,
         val version: String,
-        val date: String)
+        val date: String,
+)
 

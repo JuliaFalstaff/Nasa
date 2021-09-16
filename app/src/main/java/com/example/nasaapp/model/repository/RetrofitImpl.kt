@@ -1,6 +1,7 @@
 package com.example.nasaapp.model.repository
 
 import com.example.nasaapp.model.data.EarthEpicServerResponseData
+import com.example.nasaapp.model.data.MarsPhotosServerResponseData
 import com.example.nasaapp.model.data.PODServerResponseData
 import com.google.gson.GsonBuilder
 import retrofit2.Callback
@@ -25,15 +26,11 @@ class RetrofitImpl {
         api.getPictureOfTheDay(apiKey).enqueue(podCallback)
     }
 
-    fun getEarthEpicPicture(apiKey: String, earthEpicCallback: Callback<List<EarthEpicServerResponseData>>) {
-        api.getEarthEpicImage(apiKey).enqueue(earthEpicCallback)
+    fun getEarthEpicPictureByDate(apiKey: String, earthEpicCallbackByDateNew: Callback<List<EarthEpicServerResponseData>>) {
+        api.getEarthEpicImageByDate(apiKey).enqueue(earthEpicCallbackByDateNew)
     }
 
-    fun getEarthEpicPictureByDate(date: String, apiKey: String, earthEpicCallbackByDate: Callback<List<EarthEpicServerResponseData>>) {
-        api.getEarthEpicImageByDate(date, apiKey).enqueue(earthEpicCallbackByDate)
-    }
-
-    fun getEarthEpicPictureByDateNew(apiKey: String, earthEpicCallbackByDateNew: Callback<List<EarthEpicServerResponseData>>) {
-        api.getEarthEpicImageByDateNew(apiKey).enqueue(earthEpicCallbackByDateNew)
+    fun getMarsPictureByDate(earth_date: String, apiKey: String, marsCallbackByDate: Callback<MarsPhotosServerResponseData>) {
+        api.getMarsImageByDate(earth_date, apiKey).enqueue(marsCallbackByDate)
     }
 }

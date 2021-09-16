@@ -53,7 +53,6 @@ class PODViewModel(
         }
     }
 
-
     companion object {
         private const val API_ERROR = "You need API Key"
         private const val UNKNOWN_ERROR = "Unidentified error"
