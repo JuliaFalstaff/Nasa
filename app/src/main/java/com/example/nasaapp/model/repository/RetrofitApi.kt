@@ -1,13 +1,20 @@
 package com.example.nasaapp.model.repository
 
+import com.example.nasaapp.model.data.EarthEpicServerResponseData
 import com.example.nasaapp.model.data.PODServerResponseData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface PictureOfTheDayApi {
+interface RetrofitApi {
     @GET("planetary/apod")
     fun getPictureOfTheDay(
             @Query("api_key") apiKey: String,
     ): Call<PODServerResponseData>
+
+    @GET("EPIC/api/natural/images")
+    fun getEarthEpicImage(
+            @Query("api_key") apiKey: String,
+    ): Call<List<EarthEpicServerResponseData>>
+
 }

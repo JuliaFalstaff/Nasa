@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/earthFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/earthImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/bg_earth" />
@@ -33,5 +35,10 @@
             android:layout_marginStart="@dimen/margin_8dp"
             app:srcCompat="@drawable/swipe_indicator_passive" />
     </LinearLayout>
+
+
+    <include
+        android:id="@+id/includeLoadingLayout"
+        layout="@layout/loading_layout" />
 
 </FrameLayout>

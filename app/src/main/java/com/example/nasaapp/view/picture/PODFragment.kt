@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.nasaapp.R
 import com.example.nasaapp.databinding.FragmentPodBinding
-import com.example.nasaapp.model.PODData
+import com.example.nasaapp.model.AppState
 import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.view.MainActivity
 import com.example.nasaapp.view.bottomnavigationdrawer.BottomNavigationDrawerFragment
@@ -61,24 +61,24 @@ class PODFragment : Fragment() {
         }
     }
 
-    private fun renderData(data: PODData?) {
+    private fun renderData(data: AppState?) {
         when (data) {
-            is PODData.Error -> {
+            is AppState.Error -> {
                 binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
                 binding.main.showSnackBar(getString(R.string.error_appstate),
                         getString(R.string.reload_appstate), { viewModel.getPODFromServer() })
             }
-            is PODData.Loading -> {
+            is AppState.Loading -> {
                 binding.includeLoadingLayout.loadingLayout.visibility = View.VISIBLE
             }
-            is PODData.Success -> {
+            is AppState.Success -> {
                 binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
                 setData(data)
             }
         }
     }
 
-    private fun setData(data: PODData.Success) = with(binding) {
+    private fun setData(data: AppState.Success) = with(binding) {
         val url = data.serverResponseData.hdurl
         if (url.isNullOrEmpty()) {
             Toast.makeText(context, getString(R.string.error_url_empty), Toast.LENGTH_LONG).show()

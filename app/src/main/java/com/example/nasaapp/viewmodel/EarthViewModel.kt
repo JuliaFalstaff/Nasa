@@ -5,13 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nasaapp.BuildConfig
 import com.example.nasaapp.model.AppState
+import com.example.nasaapp.model.data.EarthEpicServerResponseData
 import com.example.nasaapp.model.data.PODServerResponseData
 import com.example.nasaapp.model.repository.RetrofitImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PODViewModel(
+class EarthViewModel(
         private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),
         private val retrofitImpl: RetrofitImpl = RetrofitImpl(),
 ) : ViewModel() {
@@ -20,24 +21,24 @@ class PODViewModel(
         return liveDataToObserve
     }
 
-    fun getPODFromServer() {
+    fun getEarthEpicPictureFromServer() {
         liveDataToObserve.postValue(AppState.Loading)
         val apiKey = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {
             AppState.Error(Throwable(API_ERROR))
         } else {
-            retrofitImpl.getPictureOfTheDay(apiKey, PODCallback)
+            retrofitImpl.getEarthEpicPicture(apiKey, earthEpicCallback)
         }
     }
 
-    val PODCallback = object : Callback<PODServerResponseData> {
+    val earthEpicCallback = object : Callback<List<EarthEpicServerResponseData>> {
 
         override fun onResponse(
-                call: Call<PODServerResponseData>,
-                response: Response<PODServerResponseData>,
+                call: Call<List<EarthEpicServerResponseData>>,
+                response: Response<List<EarthEpicServerResponseData>>,
         ) {
             if (response.isSuccessful && response.body() != null) {
-                liveDataToObserve.postValue(AppState.Success(response.body()!!))
+                liveDataToObserve.postValue(AppState.SuccessEarthEpic(response.body()!!))
             } else {
                 val message = response.message()
                 if (message.isNullOrEmpty()) {
@@ -48,11 +49,10 @@ class PODViewModel(
             }
         }
 
-        override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
+        override fun onFailure(call: Call<List<EarthEpicServerResponseData>>, t: Throwable) {
             liveDataToObserve.postValue(AppState.Error(t))
         }
     }
-
 
     companion object {
         private const val API_ERROR = "You need API Key"
