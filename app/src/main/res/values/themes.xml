@@ -105,12 +105,11 @@
 
     <style name="BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
         <item name="backgroundTint">?attr/colorSecondary</item>
+        <item name="iconTint">@color/white_bottom_sheet</item>
     </style>
 
     <style name="BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="android:layout_marginTop">@dimen/margin_start_navigation_view</item>
-        <item name="android:layout_marginStart">@dimen/margin_start_navigation_view</item>
-        <item name="android:layout_marginEnd">@dimen/margin_start_navigation_view</item>
         <item name="backgroundTint">?attr/colorSecondary</item>
         <item name="iconTint">@color/white_bottom_sheet</item>
         <item name="android:textColor">@color/white_bottom_sheet</item>
