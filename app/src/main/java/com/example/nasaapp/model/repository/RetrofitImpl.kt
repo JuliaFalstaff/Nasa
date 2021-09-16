@@ -29,6 +29,11 @@ class RetrofitImpl {
         api.getEarthEpicImage(apiKey).enqueue(earthEpicCallback)
     }
 
+    fun getEarthEpicPictureByDate(date: String, apiKey: String, earthEpicCallbackByDate: Callback<List<EarthEpicServerResponseData>>) {
+        api.getEarthEpicImageByDate(date, apiKey).enqueue(earthEpicCallbackByDate)
+    }
 
-
+    fun getEarthEpicPictureByDateNew(apiKey: String, earthEpicCallbackByDateNew: Callback<List<EarthEpicServerResponseData>>) {
+        api.getEarthEpicImageByDateNew(apiKey).enqueue(earthEpicCallbackByDateNew)
+    }
 }

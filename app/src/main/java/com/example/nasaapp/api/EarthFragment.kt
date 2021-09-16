@@ -19,10 +19,12 @@ import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.viewmodel.EarthViewModel
 import com.example.nasaapp.viewmodel.PODViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import java.time.format.DateTimeFormatter
 
 class EarthFragment : Fragment() {
 
     private var _binding: FragmentEarthBinding? = null
+    private lateinit var yesterdayDate: String
     val binding: FragmentEarthBinding
         get() {
             return _binding!!
@@ -44,7 +46,8 @@ class EarthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.getEarthEpicPictureFromServer()
+        viewModel.getEarthEpicPictureFromServerByDateNew()
+        yesterdayDate = viewModel.getYesterdayDayForURL()
 
     }
 
@@ -53,7 +56,7 @@ class EarthFragment : Fragment() {
             is AppState.Error -> {
                 binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
                 binding.earthFragment.showSnackBar(getString(R.string.error_appstate),
-                        getString(R.string.reload_appstate), { viewModel.getEarthEpicPictureFromServer() })
+                        getString(R.string.reload_appstate), { viewModel.getEarthEpicPictureFromServerByDateNew() })
             }
             is AppState.Loading -> {
                 binding.includeLoadingLayout.loadingLayout.visibility = View.VISIBLE
@@ -68,17 +71,32 @@ class EarthFragment : Fragment() {
     private fun setData(data: AppState.SuccessEarthEpic) = with(binding) {
         val image = data.serverResponseData.first().image
 
+
+//        if (image.isEmpty()) {
+//            Toast.makeText(context, getString(R.string.error_url_empty), Toast.LENGTH_LONG).show()
+//        } else {
+//            earthImageView.load(BASE_URL + image + SUFFIX_PNG + BuildConfig.NASA_API_KEY) {
+//                error(R.drawable.ic_load_error_vector)
+//            }
+//        }
+
         if (image.isEmpty()) {
             Toast.makeText(context, getString(R.string.error_url_empty), Toast.LENGTH_LONG).show()
         } else {
-            earthImageView.load(BASE_URL + image + SUFFIX_PNG + BuildConfig.NASA_API_KEY) {
+            earthImageView.load(BASE_URL + yesterdayDate + IMAGE_FORMAT + image + SUFFIX_PNG + BuildConfig.NASA_API_KEY) {
                 error(R.drawable.ic_load_error_vector)
             }
         }
     }
 
+
+
     companion object {
-        private const val BASE_URL = "https://api.nasa.gov/EPIC/archive/natural/2021/09/15/png/"
+//        private const val BASE_URL = "https://api.nasa.gov/EPIC/archive/natural/2021/09/15/png/"
+//        private const val SUFFIX_PNG = ".png?api_key="
+
+        private const val BASE_URL = "https://api.nasa.gov/EPIC/archive/natural/"
+        private const val IMAGE_FORMAT = "/png/"
         private const val SUFFIX_PNG = ".png?api_key="
 
 //
