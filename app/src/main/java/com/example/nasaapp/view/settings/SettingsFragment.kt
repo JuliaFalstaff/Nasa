@@ -37,8 +37,8 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
-       val btn =  binding.radioButtonGroup.checkedRadioButtonId
+
+        val btn = binding.radioButtonGroup.checkedRadioButtonId
         binding.radioButtonGroup.check(btn)
         chooseTheme()
     }

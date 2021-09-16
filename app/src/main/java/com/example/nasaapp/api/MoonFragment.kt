@@ -12,5 +12,4 @@ class MoonFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_moon, container, false) //TODO заменить на картинку луны в layout
     }
-
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bg_earth"/>
+        android:src="@drawable/bg_earth" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -19,19 +19,19 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/swipe_indicator_active"/>
+            app:srcCompat="@drawable/swipe_indicator_active" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_8dp"
-            app:srcCompat="@drawable/swipe_indicator_passive"/>
+            app:srcCompat="@drawable/swipe_indicator_passive" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_8dp"
-            app:srcCompat="@drawable/swipe_indicator_passive"/>
+            app:srcCompat="@drawable/swipe_indicator_passive" />
     </LinearLayout>
 
 </FrameLayout>

@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import com.example.nasaapp.R
 import com.example.nasaapp.api.viewpager.ViewPagerAdapter
 import com.example.nasaapp.databinding.FragmentSolarSystemBinding
-import com.example.nasaapp.view.favourite.FavouriteFragment
 import com.example.nasaapp.view.picture.PODFragment
 import com.example.nasaapp.view.settings.SettingsFragment
 
@@ -22,8 +21,8 @@ class SolarSystemFragment : Fragment() {
         }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentSolarSystemBinding.inflate(inflater)
         return binding.root
@@ -59,24 +58,22 @@ class SolarSystemFragment : Fragment() {
 
     private fun initTabIcons() = with(binding) {
         tabLayout.getTabAt(0)?.customView =
-            layoutInflater.inflate(R.layout.activity_api_tablayout_earth,null)
+                layoutInflater.inflate(R.layout.activity_api_tablayout_earth, null)
         tabLayout.getTabAt(1)?.customView =
-            layoutInflater.inflate(R.layout.activity_api_tablayout_mars,null)
+                layoutInflater.inflate(R.layout.activity_api_tablayout_mars, null)
         tabLayout.getTabAt(2)?.customView =
-            layoutInflater.inflate(R.layout.activity_api_tablayout_moon,null)
+                layoutInflater.inflate(R.layout.activity_api_tablayout_moon, null)
     }
 
 
     private fun openFragment(fragment: Fragment) {
         activity?.supportFragmentManager?.apply {
             beginTransaction()
-                .replace(R.id.container, fragment)
-                .addToBackStack("")
-                .commitAllowingStateLoss()
+                    .replace(R.id.container, fragment)
+                    .addToBackStack("")
+                    .commitAllowingStateLoss()
         }
     }
-
-
 
 
     companion object {

@@ -27,10 +27,6 @@ class FavouriteFragment : Fragment() {
         _binding = FragmentSettingsBinding.inflate(inflater)
         return binding.root
     }
-
-
-
-
 }
 
 

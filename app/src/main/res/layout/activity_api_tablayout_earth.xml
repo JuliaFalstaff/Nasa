@@ -10,7 +10,7 @@
         android:drawableStart="@drawable/ic_earth"
         android:drawablePadding="@dimen/drawablePadding"
         android:text="@string/earth_tab"
-          android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/text_size_explanation" />
+        android:textSize="@dimen/text_size_explanation"
+        android:textStyle="bold" />
 </FrameLayout>

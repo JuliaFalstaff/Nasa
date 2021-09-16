@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private val themeId: Int by lazy {
         getSharedPreferences(THEME_SHARED_PREFERENCE, MODE_PRIVATE).getInt(THEME_SHARED_PREFERENCE, DefaultTheme)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(chooseTheme(themeId))
         super.onCreate(savedInstanceState)
@@ -25,13 +26,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun chooseTheme(theme: Int) : Int {
+    private fun chooseTheme(theme: Int): Int {
         return when (theme) {
             GalaxyTheme -> R.style.GalaxyAppTheme
             MarsTheme -> R.style.MarsAppTheme
             MoonTheme -> R.style.MoonAppTheme
-            DefaultTheme ->  R.style.Theme_NasaApp
-            else -> R.style.Theme_NasaApp
+            DefaultTheme -> R.style.NasaApp
+            else -> R.style.NasaApp
         }
     }
 

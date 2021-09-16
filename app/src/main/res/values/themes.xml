@@ -42,26 +42,26 @@
         <item name="fontFamily">@font/amiko_mars</item>
     </style>
 
-        <style name="GalaxyAppTheme" parent="NasaApp">
-            <!-- Primary brand color. -->
-            <item name="colorPrimary">@color/galaxy_primary</item>
-            <item name="colorPrimaryDark">@color/navy_theme</item>
-            <item name="colorOnPrimary">@color/galaxy_color_on_primary</item>
-            <!-- Secondary brand color. -->
-            <item name="colorSecondary">@color/galaxy_secondary</item>
-            <item name="colorSecondaryVariant">@color/galaxy_secondary_variant</item>
-            <item name="colorOnSecondary">@color/galaxy_color_on_secondary</item>
-            <!-- Status bar color. -->
-            <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
-            <item name="android:textStyle">bold</item>
-            <item name="android:textSize">@dimen/text_size_explanation</item>
-            <item name="textInputStyle">@style/CustomOutlinedBox</item>
-            <item name="radioButtonStyle">@style/RadioGroupStyle</item>
-            <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
-            <item name="bottomAppBarStyle">@style/BottomAppBar</item>
-            <item name="bottomNavigationStyle">@style/BottomNavigationView</item>
-            <item name="fontFamily">@font/antic_slab_galaxy</item>
-        </style>
+    <style name="GalaxyAppTheme" parent="NasaApp">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/galaxy_primary</item>
+        <item name="colorPrimaryDark">@color/navy_theme</item>
+        <item name="colorOnPrimary">@color/galaxy_color_on_primary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/galaxy_secondary</item>
+        <item name="colorSecondaryVariant">@color/galaxy_secondary_variant</item>
+        <item name="colorOnSecondary">@color/galaxy_color_on_secondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_explanation</item>
+        <item name="textInputStyle">@style/CustomOutlinedBox</item>
+        <item name="radioButtonStyle">@style/RadioGroupStyle</item>
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+        <item name="bottomAppBarStyle">@style/BottomAppBar</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationView</item>
+        <item name="fontFamily">@font/antic_slab_galaxy</item>
+    </style>
 
     <style name="MoonAppTheme" parent="NasaApp">
         <!-- Primary brand color. -->
@@ -99,7 +99,8 @@
         <item name="backgroundTint">@color/white_bottom_sheet</item>
         <item name="behavior_hideable">true</item>
         <item name="behavior_peekHeight">@dimen/peek_height_bottom_sheet_behavior</item>
-        <item name="layout_behavior"> com.google.android.material.bottomsheet.BottomSheetBehavior</item>
+        <item name="layout_behavior">com.google.android.material.bottomsheet.BottomSheetBehavior
+        </item>
     </style>
 
     <style name="BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
@@ -110,6 +111,9 @@
         <item name="android:layout_marginTop">@dimen/margin_start_navigation_view</item>
         <item name="android:layout_marginStart">@dimen/margin_start_navigation_view</item>
         <item name="android:layout_marginEnd">@dimen/margin_start_navigation_view</item>
+        <item name="backgroundTint">?attr/colorSecondary</item>
+        <item name="iconTint">@color/white_bottom_sheet</item>
+        <item name="android:textColor">@color/white_bottom_sheet</item>
     </style>
 
     <style name="RadioGroupStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">

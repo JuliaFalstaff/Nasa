@@ -26,9 +26,9 @@ class PODFragment : Fragment() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private var _binding: FragmentPodBinding? = null
     val binding: FragmentPodBinding
-    get() {
-        return _binding!!
-    }
+        get() {
+            return _binding!!
+        }
 
     private val viewModel: PODViewModel by lazy {
         ViewModelProvider(this).get(PODViewModel::class.java)
@@ -61,8 +61,8 @@ class PODFragment : Fragment() {
         }
     }
 
-    private fun renderData(data: PODData?)  {
-        when(data) {
+    private fun renderData(data: PODData?) {
+        when (data) {
             is PODData.Error -> {
                 binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
                 binding.main.showSnackBar(getString(R.string.error_appstate),

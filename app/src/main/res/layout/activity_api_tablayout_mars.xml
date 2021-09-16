@@ -10,7 +10,7 @@
         android:drawableStart="@drawable/ic_mars"
         android:drawablePadding="@dimen/drawablePadding"
         android:text="@string/mars_tab"
-        android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/text_size_explanation" />
+        android:textSize="@dimen/text_size_explanation"
+        android:textStyle="bold" />
 </FrameLayout>

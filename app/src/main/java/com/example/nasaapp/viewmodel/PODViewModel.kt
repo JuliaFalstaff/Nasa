@@ -11,8 +11,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PODViewModel(private val liveDataToObserve: MutableLiveData<PODData> = MutableLiveData(),
-                   private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
+class PODViewModel(
+        private val liveDataToObserve: MutableLiveData<PODData> = MutableLiveData(),
+        private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl(),
 ) : ViewModel() {
 
     fun getLiveData(): LiveData<PODData> {
@@ -26,28 +27,28 @@ class PODViewModel(private val liveDataToObserve: MutableLiveData<PODData> = Mut
             PODData.Error(Throwable(API_ERROR))
         } else {
             retrofitImpl.getRetrofitImp().getPictureOfTheDay(apiKey).enqueue(
-                object : Callback<PODServerResponseData> {
+                    object : Callback<PODServerResponseData> {
 
-                    override fun onResponse(
-                        call: Call<PODServerResponseData>,
-                        response: Response<PODServerResponseData>
-                    ) {
-                        if (response.isSuccessful && response.body() != null) {
-                            liveDataToObserve.postValue(PODData.Success(response.body()!!))
-                        } else {
-                            val message = response.message()
-                            if (message.isNullOrEmpty()) {
-                                liveDataToObserve.postValue(PODData.Error(Throwable(UNKNOWN_ERROR)))
+                        override fun onResponse(
+                                call: Call<PODServerResponseData>,
+                                response: Response<PODServerResponseData>,
+                        ) {
+                            if (response.isSuccessful && response.body() != null) {
+                                liveDataToObserve.postValue(PODData.Success(response.body()!!))
                             } else {
-                                liveDataToObserve.postValue(PODData.Error(Throwable(message)))
+                                val message = response.message()
+                                if (message.isNullOrEmpty()) {
+                                    liveDataToObserve.postValue(PODData.Error(Throwable(UNKNOWN_ERROR)))
+                                } else {
+                                    liveDataToObserve.postValue(PODData.Error(Throwable(message)))
+                                }
                             }
                         }
-                    }
 
-                    override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
-                        liveDataToObserve.postValue(PODData.Error(t))
+                        override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
+                            liveDataToObserve.postValue(PODData.Error(t))
+                        }
                     }
-                }
             )
         }
     }
