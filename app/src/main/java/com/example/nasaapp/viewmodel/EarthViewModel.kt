@@ -31,23 +31,22 @@ class EarthViewModel(
         if (apiKey.isBlank()) {
             AppState.Error(Throwable(API_ERROR))
         } else {
-
             retrofitImpl.getEarthEpicPictureByDate(apiKey, earthEpicCallbackByDate)
         }
     }
 
-    fun getYesterdayDayForURL(): String {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val yesterday = LocalDateTime.now().minusDays(1)
-            val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd")
-            return yesterday.format(formatter)
-        } else {
-            val cal: Calendar = Calendar.getInstance()
-            val s = SimpleDateFormat("yyyy/MM/dd")
-            cal.add(Calendar.DAY_OF_YEAR, -1)
-            return s.format(cal.time)
-        }
-    }
+//    fun getYesterdayDayForURL(): String {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            val yesterday = LocalDateTime.now().minusDays(1)
+//            val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd")
+//            return yesterday.format(formatter)
+//        } else {
+//            val cal: Calendar = Calendar.getInstance()
+//            val s = SimpleDateFormat("yyyy/MM/dd")
+//            cal.add(Calendar.DAY_OF_YEAR, -1)
+//            return s.format(cal.time)
+//        }
+//    }
 
     val earthEpicCallbackByDate = object : Callback<List<EarthEpicServerResponseData>> {
 

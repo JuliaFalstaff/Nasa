@@ -15,6 +15,7 @@ import com.example.nasaapp.model.AppState
 import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.viewmodel.MarsViewModel
 
+
 class MarsFragment : Fragment() {
 
     private var _binding: FragmentMarsBinding? = null

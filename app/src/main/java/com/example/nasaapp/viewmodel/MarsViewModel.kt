@@ -31,14 +31,14 @@ class MarsViewModel(
         if (apiKey.isBlank()) {
             AppState.Error(Throwable(API_ERROR))
         } else {
-            val earthDate = getYesterdayDay()
+            val earthDate = getDayBeforeYesterday()
             retrofitImpl.getMarsPictureByDate(earthDate, apiKey, marsCallback)
         }
     }
 
-    fun getYesterdayDay(): String {
+    fun getDayBeforeYesterday(): String {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val yesterday = LocalDateTime.now().minusDays(1)
+            val yesterday = LocalDateTime.now().minusDays(2)
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             return yesterday.format(formatter)
         } else {

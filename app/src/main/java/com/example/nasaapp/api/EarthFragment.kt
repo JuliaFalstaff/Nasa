@@ -1,5 +1,6 @@
 package com.example.nasaapp.api
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,11 +16,16 @@ import com.example.nasaapp.databinding.FragmentEarthBinding
 import com.example.nasaapp.model.AppState
 import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.viewmodel.EarthViewModel
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class EarthFragment : Fragment() {
 
     private var _binding: FragmentEarthBinding? = null
     private lateinit var yesterdayDate: String
+    private lateinit var dayFromURL: String
     val binding: FragmentEarthBinding
         get() {
             return _binding!!
@@ -42,7 +48,7 @@ class EarthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getEarthEpicPictureFromServerByDate()
-        yesterdayDate = viewModel.getYesterdayDayForURL()
+//        yesterdayDate = viewModel.getYesterdayDayForURL()
     }
 
     private fun renderData(data: AppState?) {
@@ -64,16 +70,23 @@ class EarthFragment : Fragment() {
 
     private fun setData(data: AppState.SuccessEarthEpic) = with(binding) {
         val image = data.serverResponseData.first().image
+        dayFromURL = getDateFromURL(data.serverResponseData.first().date)
+        val currentDayFromUrl = dayFromURL
 
         if (image.isEmpty()) {
             Toast.makeText(context, getString(R.string.error_url_empty), Toast.LENGTH_LONG).show()
         } else {
-            earthImageView.load(BASE_URL + yesterdayDate + IMAGE_FORMAT + image + SUFFIX_PNG + BuildConfig.NASA_API_KEY) {
+            earthImageView.load(BASE_URL + dayFromURL + IMAGE_FORMAT + image + SUFFIX_PNG + BuildConfig.NASA_API_KEY) {
                 error(R.drawable.ic_load_error_vector)
             }
         }
     }
 
+    private fun getDateFromURL(date: String): String {
+        var serverDate = date.replace("-","/",true)
+        serverDate = serverDate.dropLast(9)
+        return serverDate
+    }
 
     companion object {
         private const val BASE_URL = "https://api.nasa.gov/EPIC/archive/natural/"
