@@ -10,8 +10,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/bg_earth" />
-
-    <include
-        android:id="@+id/includeLoadingLayout"
-        layout="@layout/loading_layout" />
 </FrameLayout>

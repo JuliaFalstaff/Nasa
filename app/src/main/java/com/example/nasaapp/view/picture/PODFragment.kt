@@ -65,15 +65,15 @@ class PODFragment : Fragment() {
     private fun renderData(data: AppState?) {
         when (data) {
             is AppState.Error -> {
-                binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
                 binding.main.showSnackBar(getString(R.string.error_appstate),
                         getString(R.string.reload_appstate), { viewModel.getPODFromServer() })
             }
             is AppState.Loading -> {
-                binding.includeLoadingLayout.loadingLayout.visibility = View.VISIBLE
+                binding.customImageView.load(R.drawable.progress_animation) {
+                    error(R.drawable.ic_load_error_vector)
+                }
             }
             is AppState.Success -> {
-                binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
                 setData(data)
             }
         }
@@ -87,6 +87,7 @@ class PODFragment : Fragment() {
             videoUrl?.let { showAVideoUrl(it) }
         } else {
             customImageView.load(url) {
+                placeholder(R.drawable.progress_animation) // этот
                 error(R.drawable.ic_load_error_vector)
             }
         }

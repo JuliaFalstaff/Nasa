@@ -72,16 +72,15 @@ class SputnikFragment : Fragment() {
     private fun renderData(data: AppState?) {
         when (data) {
             is AppState.Error -> {
-                binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
-
                 binding.sputnikFragment.showSnackBar(getString(R.string.error_appstate),
                         getString(R.string.reload_appstate), { getData() })
             }
             is AppState.Loading -> {
-                binding.includeLoadingLayout.loadingLayout.visibility = View.VISIBLE
+                binding.sputnikImageView.load(R.drawable.progress_animation) {
+                    error(R.drawable.ic_load_error_vector)
+                }
             }
             is AppState.SuccessSputnik -> {
-                binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
                 setData(data)
             }
         }
@@ -94,6 +93,7 @@ class SputnikFragment : Fragment() {
             Toast.makeText(context, getString(R.string.error_url_empty), Toast.LENGTH_LONG).show()
         } else {
             sputnikImageView.load(image) {
+                placeholder(R.drawable.progress_animation) // этот
                 error(R.drawable.ic_load_error_vector)
             }
         }

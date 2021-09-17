@@ -48,15 +48,15 @@ class EarthFragment : Fragment() {
     private fun renderData(data: AppState?) {
         when (data) {
             is AppState.Error -> {
-                binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
                 binding.earthFragment.showSnackBar(getString(R.string.error_appstate),
                         getString(R.string.reload_appstate), { viewModel.getEarthEpicPictureFromServerByDate() })
             }
             is AppState.Loading -> {
-                binding.includeLoadingLayout.loadingLayout.visibility = View.VISIBLE
+                binding.earthImageView.load(R.drawable.progress_animation) {
+                    error(R.drawable.ic_load_error_vector)
+                }
             }
             is AppState.SuccessEarthEpic -> {
-                binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
                 setData(data)
             }
         }
@@ -71,6 +71,7 @@ class EarthFragment : Fragment() {
             Toast.makeText(context, getString(R.string.error_url_empty), Toast.LENGTH_LONG).show()
         } else {
             earthImageView.load(BASE_URL + dayFromURL + IMAGE_FORMAT + image + SUFFIX_PNG + BuildConfig.NASA_API_KEY) {
+                placeholder(R.drawable.progress_animation) // этот
                 error(R.drawable.ic_load_error_vector)
             }
         }

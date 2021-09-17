@@ -45,15 +45,15 @@ class MarsFragment : Fragment() {
     private fun renderData(data: AppState?) {
         when (data) {
             is AppState.Error -> {
-                binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
                 binding.marsFragment.showSnackBar(getString(R.string.error_appstate),
                         getString(R.string.reload_appstate), { viewModel.getMarsPictureFromServer() })
             }
             is AppState.Loading -> {
-                binding.includeLoadingLayout.loadingLayout.visibility = View.VISIBLE
+                binding.marsImageView.load(R.drawable.progress_animation) {
+                    error(R.drawable.ic_load_error_vector)
+                }
             }
             is AppState.SuccessMars -> {
-                binding.includeLoadingLayout.loadingLayout.visibility = View.GONE
                 setData(data)
             }
         }
@@ -65,6 +65,7 @@ class MarsFragment : Fragment() {
             Toast.makeText(context, getString(R.string.error_url_empty), Toast.LENGTH_LONG).show()
         } else {
             marsImageView.load(url) {
+                placeholder(R.drawable.progress_animation) // этот
                 error(R.drawable.ic_load_error_vector)
             }
         }

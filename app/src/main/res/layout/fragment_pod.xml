@@ -71,8 +71,4 @@
         app:hideOnScroll="true"
         app:layout_scrollFlags="scroll|enterAlways"
         app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
-
-    <include
-        android:id="@+id/includeLoadingLayout"
-        layout="@layout/loading_layout" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
