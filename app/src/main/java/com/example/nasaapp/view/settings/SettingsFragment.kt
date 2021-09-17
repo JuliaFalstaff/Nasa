@@ -36,9 +36,7 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val btn = binding.radioButtonGroup.checkedRadioButtonId
-        binding.radioButtonGroup.check(btn)
+        initCheckedButtonTheme()
         chooseTheme()
     }
 
@@ -66,7 +64,7 @@ class SettingsFragment : Fragment() {
     }
 
     private fun saveSharedPreferences(code: Int) {
-        val sharedPref = activity?.let {
+        var sharedPref = activity?.let {
             it.getSharedPreferences(THEME_SHARED_PREFERENCE, Context.MODE_PRIVATE)
                     .edit()
                     .putInt(THEME_SHARED_PREFERENCE, code)
@@ -76,9 +74,26 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    private fun initCheckedButtonTheme() {
+        when (getCurrentTheme()) {
+            GalaxyTheme -> binding.radioButtonGroup.check(R.id.radioButtonGalaxyTheme)
+            MarsTheme -> binding.radioButtonGroup.check(R.id.radioButtonMarsTheme)
+            MoonTheme -> binding.radioButtonGroup.check(R.id.radioButtonMoonTheme)
+            DefaultTheme -> binding.radioButtonGroup.check(R.id.radioButtonDefaultTheme)
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    fun getCurrentTheme(): Int? {
+        var sharedPref = activity?.let {
+            it.getSharedPreferences(THEME_SHARED_PREFERENCE, Context.MODE_PRIVATE)
+
+        }
+        return sharedPref?.getInt(THEME_SHARED_PREFERENCE, -1)
     }
 }
 
