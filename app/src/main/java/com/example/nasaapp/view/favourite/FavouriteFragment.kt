@@ -13,7 +13,6 @@ class FavouriteFragment : Fragment() {
         fun newInstance() = FavouriteFragment()
     }
 
-
     var _binding: FragmentSettingsBinding? = null
     val binding: FragmentSettingsBinding
         get() {

@@ -95,7 +95,7 @@ class PODFragment : Fragment() {
     }
 
     private fun showAVideoUrl(videoUrl: String) = with(binding) {
-        customImageView.visibility =View.GONE
+        customImageView.visibility = View.GONE
         videoOfTheDay.visibility = View.VISIBLE
         videoOfTheDay.text = getString(R.string.video) + videoUrl.toString()
         videoOfTheDay.setOnClickListener {

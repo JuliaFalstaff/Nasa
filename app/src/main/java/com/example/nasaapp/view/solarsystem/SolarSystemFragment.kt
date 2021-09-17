@@ -62,9 +62,8 @@ class SolarSystemFragment : Fragment() {
         tabLayout.getTabAt(1)?.customView =
                 layoutInflater.inflate(R.layout.activity_api_tablayout_mars, null)
         tabLayout.getTabAt(2)?.customView =
-                layoutInflater.inflate(R.layout.activity_api_tablayout_moon, null)
+                layoutInflater.inflate(R.layout.activity_api_tablayout_sputnik, null)
     }
-
 
     private fun openFragment(fragment: Fragment) {
         activity?.supportFragmentManager?.apply {
@@ -75,9 +74,7 @@ class SolarSystemFragment : Fragment() {
         }
     }
 
-
     companion object {
         fun newInstance() = SolarSystemFragment()
     }
-
 }

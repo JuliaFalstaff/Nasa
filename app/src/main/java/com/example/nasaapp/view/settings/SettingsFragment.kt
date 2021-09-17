@@ -20,7 +20,6 @@ class SettingsFragment : Fragment() {
         private const val MoonTheme = 3
     }
 
-
     var _binding: FragmentSettingsBinding? = null
     val binding: FragmentSettingsBinding
         get() {
@@ -76,7 +75,6 @@ class SettingsFragment : Fragment() {
             it.recreate()
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

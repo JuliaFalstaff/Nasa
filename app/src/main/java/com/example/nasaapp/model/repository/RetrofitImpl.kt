@@ -1,6 +1,7 @@
 package com.example.nasaapp.model.repository
 
 import com.example.nasaapp.model.data.EarthEpicServerResponseData
+import com.example.nasaapp.model.data.SputnikServerResponseData
 import com.example.nasaapp.model.data.MarsPhotosServerResponseData
 import com.example.nasaapp.model.data.PODServerResponseData
 import com.google.gson.GsonBuilder
@@ -32,5 +33,9 @@ class RetrofitImpl {
 
     fun getMarsPictureByDate(earth_date: String, apiKey: String, marsCallbackByDate: Callback<MarsPhotosServerResponseData>) {
         api.getMarsImageByDate(earth_date, apiKey).enqueue(marsCallbackByDate)
+    }
+
+    fun getSputnikPictureByDate(lon: Float, lat: Float, date: String, dim: Float, apiKey: String, sputnikCallback: Callback<SputnikServerResponseData>) {
+        api.getLandscapeImageFromSputnik(lon, lat, date, dim, apiKey).enqueue(sputnikCallback)
     }
 }

@@ -1,6 +1,5 @@
 package com.example.nasaapp.viewmodel
 
-import android.os.Build
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,10 +10,6 @@ import com.example.nasaapp.model.repository.RetrofitImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 class EarthViewModel(
         private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),
@@ -34,19 +29,6 @@ class EarthViewModel(
             retrofitImpl.getEarthEpicPictureByDate(apiKey, earthEpicCallbackByDate)
         }
     }
-
-//    fun getYesterdayDayForURL(): String {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            val yesterday = LocalDateTime.now().minusDays(1)
-//            val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd")
-//            return yesterday.format(formatter)
-//        } else {
-//            val cal: Calendar = Calendar.getInstance()
-//            val s = SimpleDateFormat("yyyy/MM/dd")
-//            cal.add(Calendar.DAY_OF_YEAR, -1)
-//            return s.format(cal.time)
-//        }
-//    }
 
     val earthEpicCallbackByDate = object : Callback<List<EarthEpicServerResponseData>> {
 

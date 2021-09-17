@@ -1,6 +1,5 @@
 package com.example.nasaapp.api
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,10 +15,6 @@ import com.example.nasaapp.databinding.FragmentEarthBinding
 import com.example.nasaapp.model.AppState
 import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.viewmodel.EarthViewModel
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 class EarthFragment : Fragment() {
 
@@ -48,7 +43,6 @@ class EarthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getEarthEpicPictureFromServerByDate()
-//        yesterdayDate = viewModel.getYesterdayDayForURL()
     }
 
     private fun renderData(data: AppState?) {

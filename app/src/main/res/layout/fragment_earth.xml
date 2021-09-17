@@ -40,5 +40,4 @@
     <include
         android:id="@+id/includeLoadingLayout"
         layout="@layout/loading_layout" />
-
 </FrameLayout>

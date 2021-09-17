@@ -1,22 +1,17 @@
 package com.example.nasaapp.viewmodel
 
-import android.os.Build
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nasaapp.BuildConfig
 import com.example.nasaapp.model.AppState
-import com.example.nasaapp.model.data.MarsPhotosServerResponseData
+import com.example.nasaapp.model.data.SputnikServerResponseData
 import com.example.nasaapp.model.repository.RetrofitImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
 
-class MarsViewModel(
+class SputnikViewModel(
         private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),
         private val retrofitImpl: RetrofitImpl = RetrofitImpl(),
 ) : ViewModel() {
@@ -25,38 +20,24 @@ class MarsViewModel(
         return liveDataToObserve
     }
 
-    fun getMarsPictureFromServer() {
+    fun getLandscapePictureFromServer(dateString: String, lon: Float, lat: Float, dim: Float) {
         liveDataToObserve.postValue(AppState.Loading)
         val apiKey = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {
             AppState.Error(Throwable(API_ERROR))
         } else {
-            val earthDate = getDayBeforeYesterday()
-            retrofitImpl.getMarsPictureByDate(earthDate, apiKey, marsCallback)
+        retrofitImpl.getSputnikPictureByDate(lon, lat, dateString, dim, apiKey, sputnikCallback)
         }
     }
 
-    fun getDayBeforeYesterday(): String {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val yesterday = LocalDateTime.now().minusDays(2)
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-            return yesterday.format(formatter)
-        } else {
-            val cal: Calendar = Calendar.getInstance()
-            val s = SimpleDateFormat("yyyy-MM-dd")
-            cal.add(Calendar.DAY_OF_YEAR, -2)
-            return s.format(cal.time)
-        }
-    }
-
-    val marsCallback = object : Callback<MarsPhotosServerResponseData> {
+    val sputnikCallback = object : Callback<SputnikServerResponseData> {
 
         override fun onResponse(
-                call: Call<MarsPhotosServerResponseData>,
-                response: Response<MarsPhotosServerResponseData>,
+                call: Call<SputnikServerResponseData>,
+                response: Response<SputnikServerResponseData>,
         ) {
             if (response.isSuccessful && response.body() != null) {
-                liveDataToObserve.postValue(AppState.SuccessMars(response.body()!!))
+                liveDataToObserve.postValue(AppState.SuccessSputnik(response.body()!!))
             } else {
                 val message = response.message()
                 if (message.isNullOrEmpty()) {
@@ -67,7 +48,7 @@ class MarsViewModel(
             }
         }
 
-        override fun onFailure(call: Call<MarsPhotosServerResponseData>, t: Throwable) {
+        override fun onFailure(call: Call<SputnikServerResponseData>, t: Throwable) {
             liveDataToObserve.postValue(AppState.Error(t))
         }
     }
