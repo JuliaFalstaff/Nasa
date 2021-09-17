@@ -14,4 +14,5 @@
     <dimen name="margin_start_navigation_view">8dp</dimen>
     <dimen name="marginBottomIndicator">100dp</dimen>
     <dimen name="drawablePadding">20dp</dimen>
+    <dimen name="margin_40dp">40dp</dimen>
 </resources>

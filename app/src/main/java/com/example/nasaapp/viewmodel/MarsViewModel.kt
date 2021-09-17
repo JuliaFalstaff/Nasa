@@ -44,7 +44,7 @@ class MarsViewModel(
         } else {
             val cal: Calendar = Calendar.getInstance()
             val s = SimpleDateFormat("yyyy-MM-dd")
-            cal.add(Calendar.DAY_OF_YEAR, -1)
+            cal.add(Calendar.DAY_OF_YEAR, -2)
             return s.format(cal.time)
         }
     }

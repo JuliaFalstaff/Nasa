@@ -21,6 +21,7 @@ import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 import com.example.nasaapp.viewmodel.PODViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
+
 class PODFragment : Fragment() {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
@@ -82,6 +83,8 @@ class PODFragment : Fragment() {
         val url = data.serverResponseData.hdurl
         if (url.isNullOrEmpty()) {
             Toast.makeText(context, getString(R.string.error_url_empty), Toast.LENGTH_LONG).show()
+            val videoUrl = data.serverResponseData.url
+            videoUrl?.let { showAVideoUrl(it) }
         } else {
             customImageView.load(url) {
                 error(R.drawable.ic_load_error_vector)
@@ -89,6 +92,18 @@ class PODFragment : Fragment() {
         }
         includeBottomSheetLayout.bottomSheetDescriptionHeader.text = data.serverResponseData.title.toString()
         includeBottomSheetLayout.bottomSheetDescription.text = data.serverResponseData.explanation.toString()
+    }
+
+    private fun showAVideoUrl(videoUrl: String) = with(binding) {
+        customImageView.visibility =View.GONE
+        videoOfTheDay.visibility = View.VISIBLE
+        videoOfTheDay.text = getString(R.string.video) + videoUrl.toString()
+        videoOfTheDay.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse(videoUrl)
+            }
+            startActivity(i)
+        }
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
@@ -136,10 +151,5 @@ class PODFragment : Fragment() {
     companion object {
         fun newInstance() = PODFragment()
         private const val WIKI_URL = "https://en.wikipedia.org/wiki/"
-        private const val THEME_SHARED_PREFERENCE = "THEME"
-        private const val DefaultTheme = 0
-        private const val GalaxyTheme = 1
-        private const val MarsTheme = 2
-        private const val MoonTheme = 3
     }
 }

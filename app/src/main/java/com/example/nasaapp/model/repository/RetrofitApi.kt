@@ -13,7 +13,6 @@ interface RetrofitApi {
             @Query("api_key") apiKey: String,
     ): Call<PODServerResponseData>
 
-
     @GET("EPIC/api/natural")
     fun getEarthEpicImageByDate(
             @Query("api_key") apiKey: String,
