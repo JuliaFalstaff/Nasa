@@ -8,7 +8,7 @@ import com.example.nasaapp.api.MarsFragment
 import com.example.nasaapp.api.SputnikFragment
 
 class ViewPagerAdapter(private val fragmentManager: FragmentManager) :
-        FragmentStatePagerAdapter(fragmentManager) {
+    FragmentStatePagerAdapter(fragmentManager) {
 
     private val fragments = arrayOf(EarthFragment(), MarsFragment(), SputnikFragment())
 

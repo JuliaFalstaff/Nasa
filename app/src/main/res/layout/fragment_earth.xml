@@ -11,32 +11,6 @@
         android:layout_height="match_parent"
         android:src="@drawable/bg_earth" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="@dimen/marginBottomIndicator"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/swipe_indicator_active" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_8dp"
-            app:srcCompat="@drawable/swipe_indicator_passive" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_8dp"
-            app:srcCompat="@drawable/swipe_indicator_passive" />
-    </LinearLayout>
-
-
     <include
         android:id="@+id/includeLoadingLayout"
         layout="@layout/loading_layout" />

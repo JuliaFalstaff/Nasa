@@ -8,7 +8,16 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
     </androidx.viewpager.widget.ViewPager>
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="@dimen/marginBottomIndicator"
+        app:ci_drawable="?colorPrimary" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

@@ -21,8 +21,8 @@ class SolarSystemFragment : Fragment() {
         }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?,
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentSolarSystemBinding.inflate(inflater)
         return binding.root
@@ -32,6 +32,7 @@ class SolarSystemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.viewPager.adapter = ViewPagerAdapter(childFragmentManager)
         binding.tabLayout.setupWithViewPager(binding.viewPager)
+        binding.indicator.setViewPager(binding.viewPager)
         initTabIcons()
         initBottomNavigationView()
     }
@@ -58,19 +59,19 @@ class SolarSystemFragment : Fragment() {
 
     private fun initTabIcons() = with(binding) {
         tabLayout.getTabAt(0)?.customView =
-                layoutInflater.inflate(R.layout.activity_api_tablayout_earth, null)
+            layoutInflater.inflate(R.layout.activity_api_tablayout_earth, null)
         tabLayout.getTabAt(1)?.customView =
-                layoutInflater.inflate(R.layout.activity_api_tablayout_mars, null)
+            layoutInflater.inflate(R.layout.activity_api_tablayout_mars, null)
         tabLayout.getTabAt(2)?.customView =
-                layoutInflater.inflate(R.layout.activity_api_tablayout_sputnik, null)
+            layoutInflater.inflate(R.layout.activity_api_tablayout_sputnik, null)
     }
 
     private fun openFragment(fragment: Fragment) {
         activity?.supportFragmentManager?.apply {
             beginTransaction()
-                    .replace(R.id.container, fragment)
-                    .addToBackStack("")
-                    .commitAllowingStateLoss()
+                .replace(R.id.container, fragment)
+                .addToBackStack("")
+                .commitAllowingStateLoss()
         }
     }
 
@@ -78,3 +79,6 @@ class SolarSystemFragment : Fragment() {
         fun newInstance() = SolarSystemFragment()
     }
 }
+
+
+
