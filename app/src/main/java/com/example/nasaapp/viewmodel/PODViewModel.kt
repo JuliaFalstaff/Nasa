@@ -1,5 +1,6 @@
 package com.example.nasaapp.viewmodel
 
+import android.os.Build
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +11,10 @@ import com.example.nasaapp.model.repository.RetrofitImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class PODViewModel(
         private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),
@@ -20,13 +25,13 @@ class PODViewModel(
         return liveDataToObserve
     }
 
-    fun getPODFromServer() {
+    fun getPODFromServer(date: String) {
         liveDataToObserve.postValue(AppState.Loading)
         val apiKey = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {
             AppState.Error(Throwable(API_ERROR))
         } else {
-            retrofitImpl.getPictureOfTheDay(apiKey, PODCallback)
+            retrofitImpl.getPictureOfTheDay(apiKey, date,  PODCallback)
         }
     }
 
@@ -52,6 +57,8 @@ class PODViewModel(
             liveDataToObserve.postValue(AppState.Error(t))
         }
     }
+
+
 
     companion object {
         private const val API_ERROR = "You need API Key"

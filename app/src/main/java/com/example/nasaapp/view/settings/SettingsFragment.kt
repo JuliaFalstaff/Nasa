@@ -91,7 +91,6 @@ class SettingsFragment : Fragment() {
     fun getCurrentTheme(): Int? {
         var sharedPref = activity?.let {
             it.getSharedPreferences(THEME_SHARED_PREFERENCE, Context.MODE_PRIVATE)
-
         }
         return sharedPref?.getInt(THEME_SHARED_PREFERENCE, -1)
     }

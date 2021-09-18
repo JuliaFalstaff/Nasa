@@ -19,7 +19,6 @@ import com.example.nasaapp.viewmodel.EarthViewModel
 class EarthFragment : Fragment() {
 
     private var _binding: FragmentEarthBinding? = null
-    private lateinit var yesterdayDate: String
     private lateinit var dayFromURL: String
     val binding: FragmentEarthBinding
         get() {

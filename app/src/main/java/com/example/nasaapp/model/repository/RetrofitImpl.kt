@@ -23,8 +23,8 @@ class RetrofitImpl {
                 .create(RetrofitApi::class.java)
     }
 
-    fun getPictureOfTheDay(apiKey: String, podCallback: Callback<PODServerResponseData>) {
-        api.getPictureOfTheDay(apiKey).enqueue(podCallback)
+    fun getPictureOfTheDay(apiKey: String, date: String, podCallback: Callback<PODServerResponseData>) {
+        api.getPictureOfTheDay(apiKey, date).enqueue(podCallback)
     }
 
     fun getEarthEpicPictureByDate(apiKey: String, earthEpicCallbackByDateNew: Callback<List<EarthEpicServerResponseData>>) {

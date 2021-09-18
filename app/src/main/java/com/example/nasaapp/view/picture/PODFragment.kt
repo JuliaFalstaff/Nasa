@@ -2,6 +2,7 @@ package com.example.nasaapp.view.picture
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -20,6 +21,10 @@ import com.example.nasaapp.view.settings.SettingsFragment
 import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 import com.example.nasaapp.viewmodel.PODViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class PODFragment : Fragment() {
@@ -47,11 +52,42 @@ class PODFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.getPODFromServer()
+        getData()
         openWikiSearch()
         setBottomSheetBehavior(binding.includeBottomSheetLayout.bottomSheetContainer)
         setBottomAppBar()
     }
+
+    private fun getData() {
+        initChips()
+    }
+
+    private fun initChips() = with(binding) {
+        chipsDayGroup.chipsGroup.check(R.id.chipToday)
+        viewModel.getPODFromServer(getDay(0))
+
+
+        chipsDayGroup.chipsGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.chipToday -> {
+                    chipsDayGroup.chipsGroup.check(R.id.chipToday)
+                    viewModel.getPODFromServer(getDay(TODAY))
+
+                }
+                R.id.chipYesterday -> {
+                    chipsDayGroup.chipsGroup.check(R.id.chipYesterday)
+                    viewModel.getPODFromServer(getDay(YESTERDAY))
+
+                }
+                R.id.chipDayBeforeYesterday -> {
+                    chipsDayGroup.chipsGroup.check(R.id.chipDayBeforeYesterday)
+                    viewModel.getPODFromServer(getDay(BEFORE_YESTERDAY))
+                }
+                else ->  viewModel.getPODFromServer(getDay(TODAY))
+            }
+        }
+    }
+
 
     private fun openWikiSearch() = with(binding) {
         inputTextLayout.setEndIconOnClickListener {
@@ -66,7 +102,7 @@ class PODFragment : Fragment() {
         when (data) {
             is AppState.Error -> {
                 binding.main.showSnackBar(getString(R.string.error_appstate),
-                        getString(R.string.reload_appstate), { viewModel.getPODFromServer() })
+                        getString(R.string.reload_appstate), { getData() })
             }
             is AppState.Loading -> {
                 binding.customImageView.load(R.drawable.progress_animation) {
@@ -149,8 +185,25 @@ class PODFragment : Fragment() {
         _binding = null
     }
 
+    fun getDay(minusDay: Int): String {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val yesterday = LocalDateTime.now().minusDays(minusDay.toLong())
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            return yesterday.format(formatter)
+        } else {
+            val cal: Calendar = Calendar.getInstance()
+            val s = SimpleDateFormat("yyyy-MM-dd")
+            cal.add(Calendar.DAY_OF_YEAR, (-minusDay))
+            return s.format(cal.time)
+        }
+    }
+
     companion object {
         fun newInstance() = PODFragment()
         private const val WIKI_URL = "https://en.wikipedia.org/wiki/"
+        private const val TODAY = 0
+        private const val YESTERDAY = 1
+        private const val BEFORE_YESTERDAY = 2
+
     }
 }

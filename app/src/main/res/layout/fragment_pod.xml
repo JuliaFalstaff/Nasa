@@ -12,6 +12,10 @@
         android:paddingStart="@dimen/padding_10dp"
         android:paddingEnd="@dimen/padding_10dp">
 
+        <include
+            android:id="@+id/chipsDayGroup"
+            layout="@layout/chips_layout" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputTextLayout"
             android:layout_width="0dp"

@@ -12,6 +12,7 @@ interface RetrofitApi {
     @GET("planetary/apod")
     fun getPictureOfTheDay(
             @Query("api_key") apiKey: String,
+            @Query("date") date: String,
     ): Call<PODServerResponseData>
 
     @GET("EPIC/api/natural")
