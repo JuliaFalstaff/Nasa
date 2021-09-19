@@ -20,7 +20,7 @@
             android:layout_marginEnd="@dimen/margin_end_wiki"
             android:layout_marginBottom="@dimen/margin_bottom_wiki"
             android:src="@drawable/ic_wikipedia"
-            android:visibility="invisible"
+
             app:layout_constraintBottom_toBottomOf="@+id/inputTextLayout"
             app:layout_constraintEnd_toEndOf="@+id/inputTextLayout"
             app:layout_constraintTop_toTopOf="@+id/inputTextLayout" />
