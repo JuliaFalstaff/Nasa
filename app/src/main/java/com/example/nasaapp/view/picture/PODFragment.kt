@@ -83,7 +83,7 @@ class PODFragment : Fragment() {
                     chipsDayGroup.chipsGroup.check(R.id.chipDayBeforeYesterday)
                     viewModel.getPODFromServer(getDay(BEFORE_YESTERDAY))
                 }
-                else ->  viewModel.getPODFromServer(getDay(TODAY))
+                else -> viewModel.getPODFromServer(getDay(TODAY))
             }
         }
     }
@@ -116,14 +116,16 @@ class PODFragment : Fragment() {
     }
 
     private fun setData(data: AppState.Success) = with(binding) {
+        videoOfTheDay.visibility = View.GONE
         val url = data.serverResponseData.hdurl
         if (url.isNullOrEmpty()) {
-            Toast.makeText(context, getString(R.string.error_url_empty), Toast.LENGTH_LONG).show()
             val videoUrl = data.serverResponseData.url
+            customImageView.setImageResource(R.drawable.ic_no_photo_vector)
             videoUrl?.let { showAVideoUrl(it) }
         } else {
+            videoOfTheDay.visibility = View.GONE
             customImageView.load(url) {
-                placeholder(R.drawable.progress_animation) // этот
+                placeholder(R.drawable.progress_animation)
                 error(R.drawable.ic_load_error_vector)
             }
         }
@@ -132,7 +134,6 @@ class PODFragment : Fragment() {
     }
 
     private fun showAVideoUrl(videoUrl: String) = with(binding) {
-        customImageView.visibility = View.GONE
         videoOfTheDay.visibility = View.VISIBLE
         videoOfTheDay.text = getString(R.string.video) + videoUrl.toString()
         videoOfTheDay.setOnClickListener {

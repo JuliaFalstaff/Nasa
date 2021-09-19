@@ -14,7 +14,8 @@
 
         <include
             android:id="@+id/chipsDayGroup"
-            layout="@layout/chips_layout" />
+            layout="@layout/chips_layout"
+            tools:layout_editor_absoluteX="10dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputTextLayout"
@@ -53,13 +54,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/padding_10dp"
-            android:layout_marginTop="@dimen/margin_40dp"
-            android:textColor="@color/purple_700"
-            android:textStyle="bold"
-            android:visibility="gone"
+            android:layout_marginTop="@dimen/margin_60dp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputTextLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/inputTextLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
