@@ -14,8 +14,7 @@
 
         <include
             android:id="@+id/chipsDayGroup"
-            layout="@layout/chips_layout"
-            tools:layout_editor_absoluteX="10dp" />
+            layout="@layout/chips_layout" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputTextLayout"
@@ -25,7 +24,7 @@
             app:endIconCheckable="true"
             app:endIconDrawable="@drawable/ic_wikipedia"
             app:helperText="@string/wiki_helper_text"
-            app:layout_constraintBottom_toTopOf="@+id/customImageView"
+            app:layout_constraintBottom_toTopOf="@id/barrierTopImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -60,6 +59,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputTextLayout" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrierTopImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top"
+            app:constraint_referenced_ids="customImageView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
