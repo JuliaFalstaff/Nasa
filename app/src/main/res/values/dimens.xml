@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_10dp">10dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="box_corner_radius">15dp</dimen>
+    <dimen name="padding_4dp">4dp</dimen>
+    <dimen name="text_size_explanation">20sp</dimen>
+    <dimen name="margin_4dp">4dp</dimen>
+    <dimen name="layout_height_bottom_sheet">1dp</dimen>
+    <dimen name="layout_width_bottom_sheet">25dp</dimen>
+    <dimen name="peek_height_bottom_sheet_behavior">200dp</dimen>
+    <dimen name="text_size_header">25sp</dimen>
+    <dimen name="large_components_corner_size">15dp</dimen>
+    <dimen name="margin_start_navigation_view">8dp</dimen>
+    <dimen name="marginBottomIndicator">100dp</dimen>
+    <dimen name="drawablePadding">20dp</dimen>
+    <dimen name="margin_40dp">40dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_60dp">60dp</dimen>
+</resources>
