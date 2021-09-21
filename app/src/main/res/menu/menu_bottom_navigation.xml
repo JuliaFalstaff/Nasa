@@ -19,4 +19,16 @@
         android:icon="@drawable/ic_settings_menu"
         android:title="@string/settings"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_about"
+        android:icon="@drawable/info"
+        android:title="@string/about"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_solar"
+        android:icon="@drawable/ic_system"
+        android:title="@string/solar_system"
+        app:showAsAction="always" />
 </menu>
