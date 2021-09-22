@@ -1,5 +1,6 @@
 package com.example.nasaapp.view.explodegame
 
+import android.app.AlertDialog
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -46,15 +47,29 @@ class ExplosionGameFragment : Fragment() {
             }
         }
         explode.excludeTarget(clickedView, true)
-        explode.duration = 5000
+        explode.duration = 4000
         val fade = Fade().addTarget(clickedView)
-        fade.duration = 6000
+        fade.duration = 4000
         val setTransition = TransitionSet()
                 .addTransition(explode)
                 .addTransition(fade)
+                .addListener(object : TransitionListenerAdapter() {
+                    override fun onTransitionEnd(transition: Transition) {
+                        showDialog()
+                    }
+                })
 
         TransitionManager.beginDelayedTransition(binding.recyclerViewExplosion, setTransition)
         binding.recyclerViewExplosion.adapter = null
+    }
+
+    private fun showDialog() {
+        AlertDialog.Builder(context)
+                .setTitle(R.string.dialog_title)
+                .setMessage(R.string.dialog_message)
+                .setNeutralButton(R.string.dialog_apply, null)
+                .setIcon(R.drawable.ic_earth_new)
+                .show()
     }
 
     inner class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
