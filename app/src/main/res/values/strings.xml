@@ -35,4 +35,5 @@
     <string name="about">About App</string>
     <string name="solar_system">Solar System</string>
     <string name="about_title">About NASA portal</string>
+    <string name="title_picture_of_day">Hello, here is a picture of a day!</string>
 </resources>

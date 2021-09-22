@@ -67,18 +67,15 @@ class PODFragment : Fragment() {
         chipsDayGroup.chipsGroup.check(R.id.chipToday)
         viewModel.getPODFromServer(getDay(0))
 
-
         chipsDayGroup.chipsGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.chipToday -> {
                     chipsDayGroup.chipsGroup.check(R.id.chipToday)
                     viewModel.getPODFromServer(getDay(TODAY))
-
                 }
                 R.id.chipYesterday -> {
                     chipsDayGroup.chipsGroup.check(R.id.chipYesterday)
                     viewModel.getPODFromServer(getDay(YESTERDAY))
-
                 }
                 R.id.chipDayBeforeYesterday -> {
                     chipsDayGroup.chipsGroup.check(R.id.chipDayBeforeYesterday)

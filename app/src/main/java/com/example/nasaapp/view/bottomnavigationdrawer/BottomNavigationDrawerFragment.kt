@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.nasaapp.R
 import com.example.nasaapp.databinding.BottomNavigationLayoutBinding
-import com.example.nasaapp.view.AboutAppFragment
+import com.example.nasaapp.view.about.AboutAppFragment
 import com.example.nasaapp.view.settings.SettingsFragment
 import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
