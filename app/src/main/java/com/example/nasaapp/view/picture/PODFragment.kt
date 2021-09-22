@@ -12,12 +12,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.nasaapp.R
-import com.example.nasaapp.databinding.FragmentPodBinding
 import com.example.nasaapp.databinding.FragmentPodStartBinding
 import com.example.nasaapp.model.AppState
 import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.view.MainActivity
 import com.example.nasaapp.view.bottomnavigationdrawer.BottomNavigationDrawerFragment
+import com.example.nasaapp.view.explodegame.ExplosionGameFragment
 import com.example.nasaapp.view.settings.SettingsFragment
 import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 import com.example.nasaapp.viewmodel.PODViewModel
@@ -155,8 +155,9 @@ class PODFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_fav -> Toast.makeText(context, R.string.favourite, Toast.LENGTH_SHORT).show()
-            R.id.app_bar_settings -> openSettingsFragment(SettingsFragment())
-            R.id.app_bar_solar -> openSettingsFragment(SolarSystemFragment())
+            R.id.app_bar_settings -> openFragment(SettingsFragment())
+            R.id.app_bar_solar -> openFragment(SolarSystemFragment())
+            R.id.app_bar_explosion_game -> openFragment(ExplosionGameFragment())
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance().show(requireActivity().supportFragmentManager, "TAG_DRAWER")
             }
@@ -164,7 +165,7 @@ class PODFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun openSettingsFragment(fragment: Fragment) {
+    private fun openFragment(fragment: Fragment) {
         activity?.supportFragmentManager?.apply {
             beginTransaction()
                     .replace(R.id.container, fragment)
