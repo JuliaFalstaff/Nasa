@@ -56,12 +56,18 @@ class ExplosionGameFragment : Fragment() {
                 .addListener(object : TransitionListenerAdapter() {
                     override fun onTransitionEnd(transition: Transition) {
                         showDialog()
-
+                        getBack()
                     }
                 })
 
         TransitionManager.beginDelayedTransition(binding.recyclerViewExplosion, setTransition)
         binding.recyclerViewExplosion.adapter = null
+    }
+
+    private fun getBack() {
+        activity?.let {
+            it.supportFragmentManager.popBackStack()
+        }
     }
 
     private fun showDialog() {

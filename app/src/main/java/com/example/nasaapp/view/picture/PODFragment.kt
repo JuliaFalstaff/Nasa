@@ -158,7 +158,6 @@ class PODFragment : Fragment() {
             R.id.app_bar_fav -> openFragment(FavouriteFragment())
             R.id.app_bar_settings -> openFragment(SettingsFragment())
             R.id.app_bar_solar -> openFragment(SolarSystemFragment())
-            R.id.app_bar_explosion_game -> openFragment(ExplosionGameFragment())
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance().show(requireActivity().supportFragmentManager, "TAG_DRAWER")
             }
