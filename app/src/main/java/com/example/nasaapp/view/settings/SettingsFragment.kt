@@ -2,12 +2,17 @@ package com.example.nasaapp.view.settings
 
 import android.content.Context
 import android.os.Bundle
+import android.transition.ChangeBounds
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnticipateOvershootInterpolator
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
+import androidx.transition.TransitionManager
 import com.example.nasaapp.R
 import com.example.nasaapp.databinding.FragmentSettingsBinding
+import com.example.nasaapp.databinding.FragmentSettingsStartBinding
 
 class SettingsFragment : Fragment() {
 
@@ -20,8 +25,9 @@ class SettingsFragment : Fragment() {
         private const val MoonTheme = 3
     }
 
-    var _binding: FragmentSettingsBinding? = null
-    val binding: FragmentSettingsBinding
+    var show = false
+    var _binding: FragmentSettingsStartBinding? = null
+    val binding: FragmentSettingsStartBinding
         get() {
             return _binding!!
         }
@@ -30,14 +36,34 @@ class SettingsFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentSettingsBinding.inflate(inflater)
+        _binding = FragmentSettingsStartBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        settingsAnimation()
         initCheckedButtonTheme()
         chooseTheme()
+    }
+
+    private fun settingsAnimation() = with(binding) {
+        buttonChooseTheme.setOnClickListener {
+            show = !show
+            val constraintSet = ConstraintSet()
+            val transition = ChangeBounds()
+            if(show){
+                constraintSet.clone(context, R.layout.fragment_settings_end)
+                transition.interpolator = AnticipateOvershootInterpolator(1.0f)
+                transition.duration = 1000
+            } else {
+                constraintSet.clone(context, R.layout.fragment_settings_start)
+                transition.interpolator = AnticipateOvershootInterpolator(1.0f)
+                transition.duration = 1000
+            }
+            android.transition.TransitionManager.beginDelayedTransition(constraintContainer,transition)
+            constraintSet.applyTo(binding.constraintContainer)
+        }
     }
 
     private fun chooseTheme() = with(binding) {

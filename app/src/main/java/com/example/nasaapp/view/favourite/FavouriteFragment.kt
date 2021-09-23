@@ -12,6 +12,7 @@ import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.example.nasaapp.databinding.FragmentFavouriteBinding
 import com.example.nasaapp.databinding.FragmentSettingsBinding
+import com.google.android.material.transition.MaterialArcMotion
 
 class FavouriteFragment : Fragment() {
 
@@ -50,7 +51,7 @@ class FavouriteFragment : Fragment() {
         buttonFavourite.setOnClickListener {
             isRightAnimation = !isRightAnimation
             val changeBounds = ChangeBounds()
-            changeBounds.setPathMotion(ArcMotion())
+            changeBounds.setPathMotion(MaterialArcMotion())
             changeBounds.duration = 2000
             TransitionManager.beginDelayedTransition(favouriteContainer, changeBounds)
 

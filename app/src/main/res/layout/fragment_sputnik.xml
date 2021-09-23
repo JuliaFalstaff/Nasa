@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.nasaapp.utils.CustomImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/sputnikImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
