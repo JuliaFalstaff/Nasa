@@ -18,6 +18,7 @@ import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.view.MainActivity
 import com.example.nasaapp.view.bottomnavigationdrawer.BottomNavigationDrawerFragment
 import com.example.nasaapp.view.explodegame.ExplosionGameFragment
+import com.example.nasaapp.view.favourite.FavouriteFragment
 import com.example.nasaapp.view.settings.SettingsFragment
 import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 import com.example.nasaapp.viewmodel.PODViewModel
@@ -154,7 +155,7 @@ class PODFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(context, R.string.favourite, Toast.LENGTH_SHORT).show()
+            R.id.app_bar_fav -> openFragment(FavouriteFragment())
             R.id.app_bar_settings -> openFragment(SettingsFragment())
             R.id.app_bar_solar -> openFragment(SolarSystemFragment())
             R.id.app_bar_explosion_game -> openFragment(ExplosionGameFragment())
