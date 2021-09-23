@@ -3,16 +3,19 @@ package com.example.nasaapp.view.settings
 import android.content.Context
 import android.os.Bundle
 import android.transition.ChangeBounds
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnticipateOvershootInterpolator
+import android.widget.FrameLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
 import androidx.transition.TransitionManager
 import com.example.nasaapp.R
 import com.example.nasaapp.databinding.FragmentSettingsBinding
 import com.example.nasaapp.databinding.FragmentSettingsStartBinding
+import com.google.android.material.transition.MaterialArcMotion
 
 class SettingsFragment : Fragment() {
 
@@ -52,7 +55,7 @@ class SettingsFragment : Fragment() {
             show = !show
             val constraintSet = ConstraintSet()
             val transition = ChangeBounds()
-            if(show){
+            if (show) {
                 constraintSet.clone(context, R.layout.fragment_settings_end)
                 transition.interpolator = AnticipateOvershootInterpolator(1.0f)
                 transition.duration = 1000
@@ -61,7 +64,7 @@ class SettingsFragment : Fragment() {
                 transition.interpolator = AnticipateOvershootInterpolator(1.0f)
                 transition.duration = 1000
             }
-            android.transition.TransitionManager.beginDelayedTransition(constraintContainer,transition)
+            android.transition.TransitionManager.beginDelayedTransition(constraintContainer, transition)
             constraintSet.applyTo(binding.constraintContainer)
         }
     }

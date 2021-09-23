@@ -11,7 +11,7 @@ import androidx.transition.TransitionManager
 import com.example.nasaapp.databinding.FragmentAboutBinding
 
 
-class AboutAppFragment: Fragment() {
+class AboutAppFragment : Fragment() {
 
     private var textIsVisible = false
     private var logoIsVisible = false
