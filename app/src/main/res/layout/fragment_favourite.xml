@@ -5,6 +5,7 @@
     android:id="@+id/favouriteContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:stateListAnimator="@animator/toolbar_elevation"
     tools:context=".view.favourite.FavouriteFragment">
 
     <com.google.android.material.button.MaterialButton
@@ -15,5 +16,44 @@
         android:backgroundTint="?colorPrimary"
         android:text="@string/favourite_pictures"
         app:rippleColor="?colorSecondary" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollViewFavourite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="52dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/bg_earth" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/bg_mars" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/bg_system" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_earth_new" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_mars_new" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>

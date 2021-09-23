@@ -37,6 +37,13 @@ class FavouriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         animateButton()
+        setListAnimator()
+    }
+
+    private fun setListAnimator() {
+        binding.scrollViewFavourite.setOnScrollChangeListener { _, _, _, _, _ ->
+            binding.favouriteContainer.isSelected = binding.scrollViewFavourite.canScrollVertically(-1)
+        }
     }
 
     private fun animateButton() = with(binding) {
