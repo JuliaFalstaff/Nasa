@@ -67,7 +67,7 @@ class ExplosionGameFragment : Fragment() {
         AlertDialog.Builder(context)
                 .setTitle(R.string.dialog_title)
                 .setMessage(R.string.dialog_message)
-                .setNeutralButton(R.string.dialog_apply, null)
+                .setPositiveButton(R.string.dialog_apply, null)
                 .setIcon(R.drawable.ic_earth_new)
                 .show()
     }

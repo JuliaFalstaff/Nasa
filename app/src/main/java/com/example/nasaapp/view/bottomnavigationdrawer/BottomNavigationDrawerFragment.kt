@@ -41,6 +41,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                 R.id.action_explosion_game -> openFragment(ExplosionGameFragment())
                 R.id.action_about -> openFragment(AboutAppFragment())
             }
+            dismiss()
             true
         }
     }
