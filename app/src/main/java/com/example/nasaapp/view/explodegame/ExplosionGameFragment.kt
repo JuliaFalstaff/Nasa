@@ -56,6 +56,7 @@ class ExplosionGameFragment : Fragment() {
                 .addListener(object : TransitionListenerAdapter() {
                     override fun onTransitionEnd(transition: Transition) {
                         showDialog()
+
                     }
                 })
 
