@@ -1,6 +1,5 @@
 package com.example.nasaapp.viewmodel
 
-import android.os.Build
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,10 +10,6 @@ import com.example.nasaapp.model.repository.RetrofitImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 class PODViewModel(
         private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),

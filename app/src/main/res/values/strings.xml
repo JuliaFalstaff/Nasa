@@ -42,4 +42,5 @@
     <string name="dialog_message">This is just a game. But, please, do not explode and destroy our Planet. Save the nature. Thank you!</string>
     <string name="favourite_pictures">Here is your favourite pictures</string>
     <string name="settings_header">Which <strike> side </strike> theme do you choose?</string>
+    <string name="empty_string"> </string>
 </resources>

@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import androidx.transition.ArcMotion
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.example.nasaapp.databinding.FragmentFavouriteBinding
-import com.example.nasaapp.databinding.FragmentSettingsBinding
 import com.google.android.material.transition.MaterialArcMotion
 
 class FavouriteFragment : Fragment() {
