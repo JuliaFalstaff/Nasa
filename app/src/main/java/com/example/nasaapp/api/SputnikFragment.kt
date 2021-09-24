@@ -82,13 +82,13 @@ class SputnikFragment : Fragment() {
 
     private fun getCurrentDate(): String {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val today = LocalDateTime.now().minusDays(0)
+            val today = LocalDateTime.now().minusDays(2)
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             return today.format(formatter)
         } else {
             val cal: Calendar = Calendar.getInstance()
             val s = SimpleDateFormat("yyyy-MM-dd")
-            cal.add(Calendar.DAY_OF_YEAR, 0)
+            cal.add(Calendar.DAY_OF_YEAR, -2)
             return s.format(cal.time)
         }
     }
