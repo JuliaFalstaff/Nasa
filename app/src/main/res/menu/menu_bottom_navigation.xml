@@ -27,8 +27,8 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/action_solar"
-        android:icon="@drawable/ic_system"
-        android:title="@string/solar_system"
+        android:id="@+id/action_explosion_game"
+        android:icon="@drawable/ic_earth_new"
+        android:title="@string/explosion_game"
         app:showAsAction="always" />
 </menu>

@@ -5,19 +5,18 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.nasaapp.R
-import com.example.nasaapp.databinding.FragmentPodBinding
 import com.example.nasaapp.databinding.FragmentPodStartBinding
 import com.example.nasaapp.model.AppState
 import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.view.MainActivity
 import com.example.nasaapp.view.bottomnavigationdrawer.BottomNavigationDrawerFragment
+import com.example.nasaapp.view.favourite.FavouriteFragment
 import com.example.nasaapp.view.settings.SettingsFragment
 import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 import com.example.nasaapp.viewmodel.PODViewModel
@@ -67,18 +66,15 @@ class PODFragment : Fragment() {
         chipsDayGroup.chipsGroup.check(R.id.chipToday)
         viewModel.getPODFromServer(getDay(0))
 
-
         chipsDayGroup.chipsGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.chipToday -> {
                     chipsDayGroup.chipsGroup.check(R.id.chipToday)
                     viewModel.getPODFromServer(getDay(TODAY))
-
                 }
                 R.id.chipYesterday -> {
                     chipsDayGroup.chipsGroup.check(R.id.chipYesterday)
                     viewModel.getPODFromServer(getDay(YESTERDAY))
-
                 }
                 R.id.chipDayBeforeYesterday -> {
                     chipsDayGroup.chipsGroup.check(R.id.chipDayBeforeYesterday)
@@ -118,6 +114,7 @@ class PODFragment : Fragment() {
 
     private fun setData(data: AppState.Success) = with(binding) {
         videoOfTheDay.visibility = View.GONE
+        videoOfTheDay.text = getString(R.string.empty_string)
         val url = data.serverResponseData.hdurl
         if (url.isNullOrEmpty()) {
             val videoUrl = data.serverResponseData.url
@@ -125,6 +122,7 @@ class PODFragment : Fragment() {
             videoUrl?.let { showAVideoUrl(it) }
         } else {
             videoOfTheDay.visibility = View.GONE
+            videoOfTheDay.text = getString(R.string.empty_string)
             customImageView.load(url) {
                 placeholder(R.drawable.progress_animation)
                 error(R.drawable.ic_load_error_vector)
@@ -157,9 +155,9 @@ class PODFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(context, R.string.favourite, Toast.LENGTH_SHORT).show()
-            R.id.app_bar_settings -> openSettingsFragment(SettingsFragment())
-            R.id.app_bar_solar -> openSettingsFragment(SolarSystemFragment())
+            R.id.app_bar_fav -> openFragment(FavouriteFragment())
+            R.id.app_bar_settings -> openFragment(SettingsFragment())
+            R.id.app_bar_solar -> openFragment(SolarSystemFragment())
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance().show(requireActivity().supportFragmentManager, "TAG_DRAWER")
             }
@@ -167,7 +165,7 @@ class PODFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun openSettingsFragment(fragment: Fragment) {
+    private fun openFragment(fragment: Fragment) {
         activity?.supportFragmentManager?.apply {
             beginTransaction()
                     .replace(R.id.container, fragment)
