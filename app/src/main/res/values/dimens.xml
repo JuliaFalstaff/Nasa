@@ -17,4 +17,9 @@
     <dimen name="margin_40dp">40dp</dimen>
     <dimen name="margin_16dp">16dp</dimen>
     <dimen name="margin_60dp">60dp</dimen>
+    <dimen name="margin_end_wiki">7dp</dimen>
+    <dimen name="margin_bottom_wiki">15dp</dimen>
+    <dimen name="text_size_header_new">50sp</dimen>
+    <dimen name="about_layout_height">300dp</dimen>
+    <dimen name="image_toolbar_height">270dp</dimen>
 </resources>

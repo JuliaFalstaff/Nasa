@@ -21,7 +21,7 @@
     <string name="moon_theme">Moon Theme</string>
     <string name="default_theme">Default Theme</string>
     <string name="apply_theme">Apply Theme</string>
-    <string name="choose_theme">Choose your theme</string>
+    <string name="choose_theme">Choose your theme:</string>
     <string name="earth_tab">Earth</string>
     <string name="mars_tab">Mars</string>
     <string name="moon_tab">Moon</string>
@@ -31,4 +31,8 @@
     <string name="chips_today">Today</string>
     <string name="chip_yesterday">Yesterday</string>
     <string name="chip_before_yesterday">Before Yesterday</string>
+    <string name="about_app_description">Welcome to the NASA API portal. The objective of this site is to make NASA data, including imagery, eminently accessible to application developers. This catalog focuses on broadly useful and user friendly APIs and does not hold every NASA API</string>
+    <string name="about">About App</string>
+    <string name="solar_system">Solar System</string>
+    <string name="about_title">About NASA portal</string>
 </resources>

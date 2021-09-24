@@ -5,12 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="@dimen/padding_10dp"
-        android:paddingEnd="@dimen/padding_10dp">
+        android:paddingEnd="@dimen/padding_10dp"
+        app:layoutDescription="@xml/motion_scene">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/buttonWiki"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_end_wiki"
+            android:layout_marginBottom="@dimen/margin_bottom_wiki"
+            android:src="@drawable/ic_wikipedia"
+
+            app:layout_constraintBottom_toBottomOf="@+id/inputTextLayout"
+            app:layout_constraintEnd_toEndOf="@+id/inputTextLayout"
+            app:layout_constraintTop_toTopOf="@+id/inputTextLayout" />
 
         <include
             android:id="@+id/chipsDayGroup"
@@ -21,6 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/search_wiki"
+            android:visibility="visible"
             app:endIconCheckable="true"
             app:endIconDrawable="@drawable/ic_wikipedia"
             app:helperText="@string/wiki_helper_text"
@@ -66,7 +80,7 @@
             android:layout_height="wrap_content"
             app:barrierDirection="top"
             app:constraint_referenced_ids="customImageView" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
     <include
         android:id="@+id/includeBottomSheetLayout"

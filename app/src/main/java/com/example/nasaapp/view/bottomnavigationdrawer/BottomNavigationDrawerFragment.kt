@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.nasaapp.R
 import com.example.nasaapp.databinding.BottomNavigationLayoutBinding
+import com.example.nasaapp.view.AboutAppFragment
 import com.example.nasaapp.view.settings.SettingsFragment
 import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -34,9 +35,10 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         binding.navigationView.itemIconTintList = null
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.app_bar_fav -> Toast.makeText(context, getString(R.string.favourite), Toast.LENGTH_SHORT).show()
-                R.id.app_bar_settings -> openFragment(SettingsFragment())
-                R.id.app_bar_solar -> openFragment(SolarSystemFragment())
+                R.id.action_fav -> Toast.makeText(context, getString(R.string.favourite), Toast.LENGTH_SHORT).show()
+                R.id.action_settings -> openFragment(SettingsFragment())
+                R.id.action_solar -> openFragment(SolarSystemFragment())
+                R.id.action_about -> openFragment(AboutAppFragment())
             }
             true
         }
