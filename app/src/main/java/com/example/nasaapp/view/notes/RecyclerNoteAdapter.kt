@@ -47,6 +47,14 @@ class RecyclerNoteAdapter(
         return noteData.size
     }
 
+    fun addLastItem() {
+        noteData.add(generateItem())
+        notifyDataSetChanged()
+    }
+
+
+    fun generateItem() = DataNote("Earth", "GenerateDescriptions")
+
     inner class EarthViewHolder(view: View) : BaseNoteViewHolder(view) {
         override fun bind(dataNote: DataNote) {
             FragmentNotesRecyclerEarthItemBinding.bind(itemView).apply {
@@ -55,7 +63,23 @@ class RecyclerNoteAdapter(
                 earthImageView.setOnClickListener {
                     onListItemClickListener.onItemClick(dataNote)
                 }
+                earthAddNoteImageView.setOnClickListener {
+                    insertItem()
+                }
+                earthDeleteImageView.setOnClickListener {
+                    removeItem()
+                }
             }
+        }
+
+        fun insertItem() {
+            noteData.add(layoutPosition, generateItem())
+            notifyItemInserted(layoutPosition)
+        }
+
+        fun removeItem() {
+            noteData.removeAt(layoutPosition)
+            notifyItemRemoved(layoutPosition)
         }
     }
 

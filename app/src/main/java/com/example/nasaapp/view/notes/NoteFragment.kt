@@ -17,6 +17,7 @@ class NoteFragment : Fragment() {
     private val binding get() = _binding!!
     private var noteData = mutableListOf<DataNote>()
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentNoteBinding.inflate(inflater, container, false)
         return binding.root
@@ -25,35 +26,26 @@ class NoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initNotes()
-        binding.recyclerViewNotes.adapter = RecyclerNoteAdapter(noteData,
+        val adapter = RecyclerNoteAdapter(noteData,
                 object : OnListItemClickListener {
                     override fun onItemClick(dataNote: DataNote) {
                         Toast.makeText(context, dataNote.titleText, Toast.LENGTH_SHORT).show()
                     }
                 }
         )
+        binding.recyclerViewNotes.adapter = adapter
+        binding.recyclerActivityFAB.setOnClickListener { adapter.addLastItem() }
     }
 
     private fun initNotes() {
-        noteData.add(0, DataNote(getString(R.string.notes_header)))
         noteData = mutableListOf(
                 DataNote("Earth", "first note"),
-                DataNote("Mars", ""),
                 DataNote("Earth", "third note"),
-                DataNote("Mars", ""),
                 DataNote("Earth", "fourth note"),
-                DataNote("Mars", ""),
                 DataNote("Earth", "third note"),
-                DataNote("Mars", ""),
-                DataNote("Earth", "fourth note"),
-                DataNote("Mars", ""),
-                DataNote("Earth", "fourth note"),
-                DataNote("Mars", ""),
-                DataNote("Earth", "third note"),
-                DataNote("Mars", ""),
-                DataNote("Earth", "fourth note"),
-                DataNote("Mars", "")
+                DataNote("Earth", "fourth note")
         )
+        noteData.add(0, DataNote(getString(R.string.notes_header), ""))
     }
 
     override fun onDestroyView() {
