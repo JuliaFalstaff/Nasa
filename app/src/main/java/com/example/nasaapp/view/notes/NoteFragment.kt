@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.nasaapp.R
 import com.example.nasaapp.databinding.FragmentNoteBinding
+
 import com.example.nasaapp.model.data.DataNote
 
 class NoteFragment : Fragment() {
@@ -33,6 +35,7 @@ class NoteFragment : Fragment() {
     }
 
     private fun initNotes() {
+        noteData.add(0, DataNote(getString(R.string.notes_header)))
         noteData = mutableListOf(
                 DataNote("Earth", "first note"),
                 DataNote("Mars", ""),

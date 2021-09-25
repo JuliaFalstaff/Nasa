@@ -46,4 +46,5 @@
     <string name="notes_header">Notes Header</string>
     <string name="notes_description">Descriprion of note</string>
     <string name="notes">Notes</string>
+    <string name="space_notes">Space Notes</string>
 </resources>
