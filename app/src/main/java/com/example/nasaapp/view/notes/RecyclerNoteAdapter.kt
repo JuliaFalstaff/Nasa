@@ -43,8 +43,6 @@ class RecyclerNoteAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-//        if (position == 0) return TYPE_HEADER
-////        return if (noteData[position].first.descriptionNote.isNullOrBlank()) TYPE_MARS else TYPE_EARTH
         return when {
             position == 0 -> TYPE_HEADER
             noteData[position].first.descriptionNote.isNullOrBlank() -> TYPE_MARS
@@ -118,7 +116,7 @@ class RecyclerNoteAdapter(
         }
 
         override fun onItemClear() {
-            itemView.setBackgroundColor(0)
+            itemView.setBackgroundColor(Color.WHITE)
         }
     }
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/cardViewNote"
     android:layout_marginTop="@dimen/margin_4dp"
     android:layout_marginBottom="@dimen/margin_4dp"
     app:cardCornerRadius="@dimen/margin_16dp"
