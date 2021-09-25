@@ -1,8 +1,11 @@
 package com.example.nasaapp.view.notes
 
+import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.MotionEventCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nasaapp.databinding.FragmentNotesRecyclerEarthItemBinding
 import com.example.nasaapp.databinding.FragmentNotesRecyclerHeaderItemBinding
@@ -12,7 +15,8 @@ import com.example.nasaapp.model.data.DataNote
 class RecyclerNoteAdapter(
         private var noteData: MutableList<Pair<DataNote, Boolean>>,
         private var onListItemClickListener: OnListItemClickListener,
-) : RecyclerView.Adapter<BaseNoteViewHolder>() {
+        private var dragListener: OnStartDragListener
+) : RecyclerView.Adapter<BaseNoteViewHolder>(), ItemTouchHelperAdapter {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseNoteViewHolder {
         return when (viewType) {
@@ -39,8 +43,13 @@ class RecyclerNoteAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (position == 0) return TYPE_HEADER
-        return if (noteData[position].first.descriptionNote.isNullOrBlank()) TYPE_MARS else TYPE_EARTH
+//        if (position == 0) return TYPE_HEADER
+////        return if (noteData[position].first.descriptionNote.isNullOrBlank()) TYPE_MARS else TYPE_EARTH
+        return when {
+            position == 0 -> TYPE_HEADER
+            noteData[position].first.descriptionNote.isNullOrBlank() -> TYPE_MARS
+            else -> TYPE_EARTH
+        }
     }
 
     override fun getItemCount(): Int {
@@ -54,24 +63,36 @@ class RecyclerNoteAdapter(
 
     fun generateItem() = DataNote("Earth", "GenerateDescriptions")
 
-    inner class EarthViewHolder(view: View) : BaseNoteViewHolder(view) {
+
+    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+        noteData.removeAt(fromPosition).apply {
+            noteData.add(if (toPosition > fromPosition) toPosition - 1 else toPosition, this)
+        }
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun onItemDismiss(position: Int) {
+        noteData.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+    inner class EarthViewHolder(view: View) : BaseNoteViewHolder(view), ItemTouchHelperViewHolder {
         override fun bind(pairDataNote: Pair<DataNote, Boolean>) {
             FragmentNotesRecyclerEarthItemBinding.bind(itemView).apply {
                 earthTitle.text = pairDataNote.first.titleText
                 earthDescription.text = pairDataNote.first.descriptionNote
-                earthImageView.setOnClickListener {
-                    onListItemClickListener.onItemClick(pairDataNote.first)
-                }
-                earthAddNoteImageView.setOnClickListener {
-                    insertItem()
-                }
-                earthDeleteImageView.setOnClickListener {
-                    removeItem()
-                }
-                earthDescription.setOnClickListener {
-                    toggleText()
-                }
+                earthImageView.setOnClickListener { onListItemClickListener.onItemClick(pairDataNote.first) }
+                earthAddNoteImageView.setOnClickListener { insertItem() }
+                earthDeleteImageView.setOnClickListener { removeItem() }
+                earthDescription.setOnClickListener { toggleText() }
                 earthFullDescriptionTextView.visibility = if (pairDataNote.second) View.VISIBLE else View.GONE
+
+                dragHandleImageView.setOnTouchListener { v, event ->
+                    if (MotionEventCompat.getActionMasked(event)  == MotionEvent.ACTION_DOWN) {
+                        dragListener.onStartDrag(this@EarthViewHolder)
+                    }
+                    false
+                }
             }
         }
 
@@ -90,6 +111,14 @@ class RecyclerNoteAdapter(
                 it.first to !it.second
             }
             notifyItemChanged(layoutPosition)
+        }
+
+        override fun onItemSelected() {
+            itemView.setBackgroundColor(Color.LTGRAY)
+        }
+
+        override fun onItemClear() {
+            itemView.setBackgroundColor(0)
         }
     }
 
@@ -112,6 +141,10 @@ class RecyclerNoteAdapter(
                 }
             }
         }
+    }
+
+    interface OnStartDragListener {
+        fun onStartDrag(viewHolder: RecyclerView.ViewHolder)
     }
 
     companion object {
