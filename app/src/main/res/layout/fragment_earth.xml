@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <com.example.nasaapp.utils.CustomImageView
         android:id="@+id/earthImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:scaleType="center"
+        android:scaleType="fitXY"
         android:src="@drawable/bg_earth" />
 </FrameLayout>

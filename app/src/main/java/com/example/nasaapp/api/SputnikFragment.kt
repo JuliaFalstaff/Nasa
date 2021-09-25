@@ -51,24 +51,6 @@ class SputnikFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         getData()
-        expandSputnikPicture()
-    }
-
-    private fun expandSputnikPicture() {
-        binding.sputnikImageView.setOnClickListener {
-            isExpanded = !isExpanded
-            val set = TransitionSet()
-                    .addTransition(ChangeBounds())
-                    .addTransition(ChangeImageTransform())
-
-            TransitionManager.beginDelayedTransition(binding.sputnikFragment, set)
-
-            binding.sputnikImageView.scaleType = if (isExpanded) {
-                ImageView.ScaleType.CENTER_CROP
-            } else {
-                ImageView.ScaleType.FIT_CENTER
-            }
-        }
     }
 
     private fun getData() {
@@ -82,13 +64,13 @@ class SputnikFragment : Fragment() {
 
     private fun getCurrentDate(): String {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val today = LocalDateTime.now().minusDays(2)
+            val today = LocalDateTime.now().minusDays(7)
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             return today.format(formatter)
         } else {
             val cal: Calendar = Calendar.getInstance()
             val s = SimpleDateFormat("yyyy-MM-dd")
-            cal.add(Calendar.DAY_OF_YEAR, -2)
+            cal.add(Calendar.DAY_OF_YEAR, -7)
             return s.format(cal.time)
         }
     }

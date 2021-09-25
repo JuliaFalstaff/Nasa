@@ -48,24 +48,6 @@ class EarthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getEarthEpicPictureFromServerByDate()
-        expandEarthPicture()
-    }
-
-    private fun expandEarthPicture() {
-        binding.earthImageView.setOnClickListener {
-            isExpanded = !isExpanded
-            val set = TransitionSet()
-                    .addTransition(ChangeBounds())
-                    .addTransition(ChangeImageTransform())
-
-            TransitionManager.beginDelayedTransition(binding.earthFragment, set)
-
-            binding.earthImageView.scaleType = if (isExpanded) {
-                ImageView.ScaleType.CENTER_CROP
-            } else {
-                ImageView.ScaleType.FIT_CENTER
-            }
-        }
     }
 
     private fun renderData(data: AppState?) {
