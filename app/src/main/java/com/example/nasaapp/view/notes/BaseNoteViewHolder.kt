@@ -5,5 +5,5 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nasaapp.model.data.DataNote
 
 abstract class BaseNoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    abstract fun bind (dateNote: DataNote)
+    abstract fun bind (pairDataNote: Pair<DataNote, Boolean>)
 }

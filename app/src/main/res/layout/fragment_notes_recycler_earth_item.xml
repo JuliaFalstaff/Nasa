@@ -1,73 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/margin_4dp"
-    app:cardCornerRadius="@dimen/margin_16dp"
     android:layout_marginBottom="@dimen/margin_4dp"
+    app:cardCornerRadius="@dimen/margin_16dp"
     app:cardElevation="@dimen/card_elevation">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/earthTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/padding_10dp"
             android:paddingEnd="@dimen/padding_10dp"
-            android:text="@string/notes_header" />
+            android:text="@string/notes_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/earthImageView"
+            android:layout_width="@dimen/size_icon_notes"
+            android:layout_height="@dimen/size_icon_notes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/earthTitle"
+            app:srcCompat="@drawable/bg_earth" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/earthImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/bg_earth" />
+        <TextView
+            android:id="@+id/earthDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/padding_10dp"
+            android:paddingEnd="@dimen/padding_10dp"
+            android:text="@string/notes_description"
+            app:layout_constraintStart_toEndOf="@+id/earthImageView"
+            app:layout_constraintTop_toBottomOf="@+id/earthTitle" />
 
-            <TextView
-                android:id="@+id/earthDescription"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:paddingStart="@dimen/padding_10dp"
-                android:paddingEnd="@dimen/padding_10dp"
-                android:text="@string/notes_description" />
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/earthAddNoteImageView"
+            android:layout_width="@dimen/size_options_cardview"
+            android:layout_height="@dimen/size_options_cardview"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/padding_10dp"
+            android:paddingEnd="@dimen/padding_10dp"
+            android:src="@drawable/ic_add_note"
+            android:text="@string/notes_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/earthTitle" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/earthAddNoteImageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_add_note"
-                    android:layout_weight="1"
-                    android:paddingStart="@dimen/padding_10dp"
-                    android:paddingEnd="@dimen/padding_10dp"
-                    android:text="@string/notes_description" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/earthDeleteImageView"
+            android:layout_width="@dimen/size_options_cardview"
+            android:layout_height="@dimen/size_options_cardview"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/padding_10dp"
+            android:paddingEnd="@dimen/padding_10dp"
+            android:src="@drawable/ic_delete_note"
+            android:text="@string/notes_description"
+            app:layout_constraintBottom_toBottomOf="@+id/earthImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/earthAddNoteImageView" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/earthDeleteImageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_delete_note"
-                    android:paddingStart="@dimen/padding_10dp"
-                    android:paddingEnd="@dimen/padding_10dp"
-                    android:text="@string/notes_description" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/earthFullDescriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_4dp"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/padding_10dp"
+            android:paddingEnd="@dimen/padding_10dp"
+            android:text="@string/notes_full_description"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/earthImageView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

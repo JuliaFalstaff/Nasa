@@ -15,7 +15,7 @@ class NoteFragment : Fragment() {
 
     private var _binding: FragmentNoteBinding? = null
     private val binding get() = _binding!!
-    private var noteData = mutableListOf<DataNote>()
+    private var noteData = mutableListOf<Pair<DataNote, Boolean>>()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,13 +39,13 @@ class NoteFragment : Fragment() {
 
     private fun initNotes() {
         noteData = mutableListOf(
-                DataNote("Earth", "first note"),
-                DataNote("Earth", "third note"),
-                DataNote("Earth", "fourth note"),
-                DataNote("Earth", "third note"),
-                DataNote("Earth", "fourth note")
+                Pair(DataNote("Earth", "first note"), false),
+                Pair(DataNote("Earth", "first note"), false),
+                Pair(DataNote("Earth", "first note"), false),
+                Pair(DataNote("Earth", "first note"), false),
+                Pair(DataNote("Earth", "first note"), false),
         )
-        noteData.add(0, DataNote(getString(R.string.notes_header), ""))
+        noteData.add(0, Pair(DataNote(getString(R.string.notes_header), ""), false) )
     }
 
     override fun onDestroyView() {

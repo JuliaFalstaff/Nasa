@@ -10,7 +10,7 @@ import com.example.nasaapp.databinding.FragmentNotesRecyclerMarsItemBinding
 import com.example.nasaapp.model.data.DataNote
 
 class RecyclerNoteAdapter(
-        private var noteData: MutableList<DataNote>,
+        private var noteData: MutableList<Pair<DataNote, Boolean>>,
         private var onListItemClickListener: OnListItemClickListener,
 ) : RecyclerView.Adapter<BaseNoteViewHolder>() {
 
@@ -40,7 +40,7 @@ class RecyclerNoteAdapter(
 
     override fun getItemViewType(position: Int): Int {
         if (position == 0) return TYPE_HEADER
-        return if (noteData[position].descriptionNote.isNullOrBlank()) TYPE_MARS else TYPE_EARTH
+        return if (noteData[position].first.descriptionNote.isNullOrBlank()) TYPE_MARS else TYPE_EARTH
     }
 
     override fun getItemCount(): Int {
@@ -48,20 +48,19 @@ class RecyclerNoteAdapter(
     }
 
     fun addLastItem() {
-        noteData.add(generateItem())
+        noteData.add(Pair(generateItem(), false))
         notifyDataSetChanged()
     }
-
 
     fun generateItem() = DataNote("Earth", "GenerateDescriptions")
 
     inner class EarthViewHolder(view: View) : BaseNoteViewHolder(view) {
-        override fun bind(dataNote: DataNote) {
+        override fun bind(pairDataNote: Pair<DataNote, Boolean>) {
             FragmentNotesRecyclerEarthItemBinding.bind(itemView).apply {
-                earthTitle.text = dataNote.titleText
-                earthDescription.text = dataNote.descriptionNote
+                earthTitle.text = pairDataNote.first.titleText
+                earthDescription.text = pairDataNote.first.descriptionNote
                 earthImageView.setOnClickListener {
-                    onListItemClickListener.onItemClick(dataNote)
+                    onListItemClickListener.onItemClick(pairDataNote.first)
                 }
                 earthAddNoteImageView.setOnClickListener {
                     insertItem()
@@ -69,36 +68,47 @@ class RecyclerNoteAdapter(
                 earthDeleteImageView.setOnClickListener {
                     removeItem()
                 }
+                earthDescription.setOnClickListener {
+                    toggleText()
+                }
+                earthFullDescriptionTextView.visibility = if (pairDataNote.second) View.VISIBLE else View.GONE
             }
         }
 
-        fun insertItem() {
-            noteData.add(layoutPosition, generateItem())
+        private fun insertItem() {
+            noteData.add(layoutPosition, Pair(generateItem(), false))
             notifyItemInserted(layoutPosition)
         }
 
-        fun removeItem() {
+        private fun removeItem() {
             noteData.removeAt(layoutPosition)
             notifyItemRemoved(layoutPosition)
+        }
+
+        private fun toggleText() {
+            noteData[layoutPosition] = noteData[layoutPosition].let {
+                it.first to !it.second
+            }
+            notifyItemChanged(layoutPosition)
         }
     }
 
     inner class MarsViewHolder(view: View) : BaseNoteViewHolder(view) {
-       override fun bind(dataNote: DataNote) {
+        override fun bind(pairDataNote: Pair<DataNote, Boolean>) {
             FragmentNotesRecyclerMarsItemBinding.bind(itemView).apply {
-                marsNoteTitle.text = dataNote.titleText
+                marsNoteTitle.text = pairDataNote.first.titleText
                 marsImageView.setOnClickListener {
-                    onListItemClickListener.onItemClick(dataNote)
+                    onListItemClickListener.onItemClick(pairDataNote.first)
                 }
             }
         }
     }
 
     inner class HeaderViewHolder(view: View) : BaseNoteViewHolder(view) {
-        override fun bind(dataNote: DataNote) {
+        override fun bind(pairDataNote: Pair<DataNote, Boolean>) {
             FragmentNotesRecyclerHeaderItemBinding.bind(itemView).apply {
                 root.setOnClickListener {
-                    onListItemClickListener.onItemClick(dataNote)
+                    onListItemClickListener.onItemClick(pairDataNote.first)
                 }
             }
         }

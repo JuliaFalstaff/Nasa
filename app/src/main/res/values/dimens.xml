@@ -27,4 +27,6 @@
     <dimen name="size_view_header">1px</dimen>
     <dimen name="size_logo_notes_header">100dp</dimen>
     <dimen name="margin_fab">15dp</dimen>
+    <dimen name="size_icon_notes">100dp</dimen>
+    <dimen name="size_options_cardview">50dp</dimen>
 </resources>
