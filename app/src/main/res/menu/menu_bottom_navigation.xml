@@ -31,4 +31,10 @@
         android:icon="@drawable/ic_earth_new"
         android:title="@string/explosion_game"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_note"
+        android:icon="@drawable/ic_note"
+        android:title="@string/notes"
+        app:showAsAction="always" />
 </menu>

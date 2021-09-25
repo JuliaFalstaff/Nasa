@@ -10,6 +10,7 @@ import com.example.nasaapp.R
 import com.example.nasaapp.databinding.BottomNavigationLayoutBinding
 import com.example.nasaapp.view.about.AboutAppFragment
 import com.example.nasaapp.view.explodegame.ExplosionGameFragment
+import com.example.nasaapp.view.notes.NoteFragment
 import com.example.nasaapp.view.settings.SettingsFragment
 import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -40,6 +41,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                 R.id.action_settings -> openFragment(SettingsFragment())
                 R.id.action_explosion_game -> openFragment(ExplosionGameFragment())
                 R.id.action_about -> openFragment(AboutAppFragment())
+                R.id.action_note -> openFragment(NoteFragment())
             }
             dismiss()
             true

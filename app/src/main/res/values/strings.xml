@@ -43,4 +43,7 @@
     <string name="favourite_pictures">Here is your favourite pictures</string>
     <string name="settings_header">Which <strike> side </strike> theme do you choose?</string>
     <string name="empty_string"> </string>
+    <string name="notes_header">Notes Header</string>
+    <string name="notes_description">Descriprion of note</string>
+    <string name="notes">Notes</string>
 </resources>
