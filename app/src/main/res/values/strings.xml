@@ -48,4 +48,9 @@
     <string name="notes">Notes</string>
     <string name="space_notes">Space Notes</string>
     <string name="notes_full_description">Достижения НАСА в 2020: Астрономы подтвердили существование первой планеты вокруг белого карлика, используя данные Тесс и отставного космического телескопа Спитцера. Впервые ученые обнаружили воду на освещенной солнцем стороне Луны с помощью воздушной обсерватории НАСА София.</string>
+    <string-array name="spinner_priority">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 </resources>
