@@ -29,4 +29,5 @@
     <dimen name="margin_fab">15dp</dimen>
     <dimen name="size_icon_notes">100dp</dimen>
     <dimen name="size_options_cardview">50dp</dimen>
+    <dimen name="margin_fab_bottom_80dp">80dp</dimen>
 </resources>

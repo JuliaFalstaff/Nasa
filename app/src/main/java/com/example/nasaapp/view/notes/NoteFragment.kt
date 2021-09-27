@@ -1,10 +1,9 @@
 package com.example.nasaapp.view.notes
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +17,9 @@ class NoteFragment : Fragment() {
     private var _binding: FragmentNoteBinding? = null
     private val binding get() = _binding!!
     private var noteData = mutableListOf<Pair<DataNote, Boolean>>()
+    lateinit var searchNoteData: MutableList<Pair<DataNote, Boolean>>
     lateinit var itemTouchHelper: ItemTouchHelper
+    lateinit var adapter: RecyclerNoteAdapter
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -29,7 +30,7 @@ class NoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initNotes()
-        val adapter = RecyclerNoteAdapter(noteData,
+        adapter = RecyclerNoteAdapter(noteData,
                 object : OnListItemClickListener {
                     override fun onItemClick(dataNote: DataNote) {
                         Toast.makeText(context, dataNote.titleText, Toast.LENGTH_SHORT).show()
@@ -44,17 +45,37 @@ class NoteFragment : Fragment() {
         binding.recyclerActivityFAB.setOnClickListener { adapter.addLastItem() }
         itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(adapter))
         itemTouchHelper.attachToRecyclerView(binding.recyclerViewNotes)
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_bottom_app_bar_note, menu)
+        val search = menu.findItem(R.id.action_search)
+        val searchView = search.actionView as SearchView
+        searchView.queryHint = "Search"
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+                }
+        })
     }
 
     private fun initNotes() {
         noteData = mutableListOf(
-                Pair(DataNote("Earth", "description note"), false),
-                Pair(DataNote("Earth", "description note"), false),
-                Pair(DataNote("Earth", "description note"), false),
-                Pair(DataNote("Earth", "description note"), false),
-                Pair(DataNote("Earth", "description note"), false)
+                Pair(DataNote(getString(R.string.title_note), getString(R.string.title_description)), false),
+                Pair(DataNote(getString(R.string.title_note), getString(R.string.title_description)), false),
+                Pair(DataNote(getString(R.string.title_note), getString(R.string.title_description)), false),
+                Pair(DataNote(getString(R.string.title_note), getString(R.string.title_description)), false),
+                Pair(DataNote(getString(R.string.title_note), getString(R.string.title_description)), false)
         )
-        noteData.add(0, Pair(DataNote(getString(R.string.notes_header), "description note"), false))
+        noteData.add(0, Pair(DataNote(getString(R.string.notes_header), getString(R.string.title_description)), false))
     }
 
     override fun onDestroyView() {

@@ -5,18 +5,24 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
+import androidx.core.util.toAndroidPair
 import androidx.core.view.MotionEventCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nasaapp.databinding.FragmentNotesRecyclerEarthItemBinding
 import com.example.nasaapp.databinding.FragmentNotesRecyclerHeaderItemBinding
 import com.example.nasaapp.databinding.FragmentNotesRecyclerMarsItemBinding
 import com.example.nasaapp.model.data.DataNote
+import java.util.*
 
 class RecyclerNoteAdapter(
         private var noteData: MutableList<Pair<DataNote, Boolean>>,
         private var onListItemClickListener: OnListItemClickListener,
         private var dragListener: OnStartDragListener
-) : RecyclerView.Adapter<BaseNoteViewHolder>(), ItemTouchHelperAdapter {
+) : RecyclerView.Adapter<BaseNoteViewHolder>(), ItemTouchHelperAdapter, Filterable {
+
+    var noteDataFiltered: MutableList<Pair<DataNote, Boolean>> = noteData
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseNoteViewHolder {
         return when (viewType) {
@@ -39,7 +45,7 @@ class RecyclerNoteAdapter(
     }
 
     override fun onBindViewHolder(holder: BaseNoteViewHolder, position: Int) {
-        holder.bind(noteData[position])
+        holder.bind(noteDataFiltered[position])
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -51,7 +57,7 @@ class RecyclerNoteAdapter(
     }
 
     override fun getItemCount(): Int {
-        return noteData.size
+        return noteDataFiltered.size
     }
 
     fun addLastItem() {
@@ -72,6 +78,34 @@ class RecyclerNoteAdapter(
     override fun onItemDismiss(position: Int) {
         noteData.removeAt(position)
         notifyItemRemoved(position)
+    }
+
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                if (charSearch.isEmpty()) {
+                    noteDataFiltered = noteData
+                } else {
+                    val resultList: MutableList<Pair<DataNote, Boolean>> = mutableListOf()
+                    for (row in noteData) {
+                        if (row.first.toString().toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))) {
+                            resultList.add(row)
+                        }
+                    }
+                    noteDataFiltered = resultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = noteDataFiltered
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                noteDataFiltered = results?.values as MutableList<Pair<DataNote, Boolean>>
+                notifyDataSetChanged()
+            }
+        }
     }
 
     inner class EarthViewHolder(view: View) : BaseNoteViewHolder(view), ItemTouchHelperViewHolder {
@@ -150,4 +184,6 @@ class RecyclerNoteAdapter(
         private const val TYPE_MARS = 1
         private const val TYPE_HEADER = 2
     }
+
 }
+

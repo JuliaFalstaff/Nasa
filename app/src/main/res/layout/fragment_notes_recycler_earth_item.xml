@@ -2,9 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardViewNote"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/cardViewNote"
     android:layout_marginTop="@dimen/margin_4dp"
     android:layout_marginBottom="@dimen/margin_4dp"
     app:cardCornerRadius="@dimen/margin_16dp"
@@ -33,7 +33,7 @@
             app:layout_constraintTop_toBottomOf="@+id/earthTitle"
             app:srcCompat="@drawable/bg_earth" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/earthDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,13 +48,13 @@
             android:id="@+id/earthAddNoteImageView"
             android:layout_width="@dimen/size_options_cardview"
             android:layout_height="@dimen/size_options_cardview"
+            android:layout_marginTop="@dimen/margin_16dp"
             android:layout_marginEnd="@dimen/margin_16dp"
             android:layout_weight="1"
             android:paddingStart="@dimen/padding_10dp"
             android:paddingEnd="@dimen/padding_10dp"
             android:src="@drawable/ic_add_note"
             android:text="@string/notes_description"
-            android:layout_marginTop="@dimen/margin_16dp"
             app:layout_constraintEnd_toStartOf="@+id/dragHandleImageView"
             app:layout_constraintTop_toBottomOf="@+id/earthTitle" />
 
@@ -62,12 +62,12 @@
             android:id="@+id/earthDeleteImageView"
             android:layout_width="@dimen/size_options_cardview"
             android:layout_height="@dimen/size_options_cardview"
+            android:layout_marginBottom="@dimen/margin_4dp"
             android:layout_weight="1"
             android:paddingStart="@dimen/padding_10dp"
             android:paddingEnd="@dimen/padding_10dp"
             android:src="@drawable/ic_delete_note"
             android:text="@string/notes_description"
-            android:layout_marginBottom="@dimen/margin_4dp"
             app:layout_constraintStart_toStartOf="@+id/earthAddNoteImageView"
             app:layout_constraintTop_toBottomOf="@+id/earthAddNoteImageView" />
 
