@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarAbout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -26,7 +27,7 @@
             android:id="@+id/nasaTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
+            android:background="?colorSecondary"
             android:paddingStart="@dimen/padding_10dp"
             android:paddingEnd="@dimen/padding_10dp"
             android:text="@string/about_title"
@@ -35,18 +36,44 @@
             android:textSize="@dimen/text_size_header" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/aboutContainer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/about_layout_height"
         android:layout_gravity="bottom"
+        android:backgroundTint="@color/white_bottom_sheet"
+        android:orientation="vertical"
         app:layout_behavior=".utils.CustomBehavior">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:layout_marginBottom="@dimen/margin_16dp"
+            android:background="?colorSecondary"
+            android:text="@string/about"
+            app:rippleColor="?colorPrimary" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/nasaLogoImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margin_4dp"
+            android:src="@drawable/nasa_logo"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/nasaDescription"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:paddingStart="@dimen/padding_10dp"
+            android:paddingEnd="@dimen/padding_10dp"
             android:text="@string/about_app_description"
-            android:textSize="@dimen/text_size_explanation" />
-    </FrameLayout>
+            android:textSize="@dimen/text_size_explanation"
+            android:visibility="gone" />
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
