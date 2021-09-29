@@ -17,8 +17,7 @@ class NoteFragment : Fragment() {
     private var _binding: FragmentNoteBinding? = null
     private val binding get() = _binding!!
     private var noteData = mutableListOf<Pair<DataNote, Boolean>>()
-    lateinit var searchNoteData: MutableList<Pair<DataNote, Boolean>>
-    lateinit var itemTouchHelper: ItemTouchHelper
+     lateinit var itemTouchHelper: ItemTouchHelper
     lateinit var adapter: RecyclerNoteAdapter
 
 

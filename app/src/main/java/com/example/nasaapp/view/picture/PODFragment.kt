@@ -1,6 +1,7 @@
 package com.example.nasaapp.view.picture
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -128,7 +129,10 @@ class PODFragment : Fragment() {
                 error(R.drawable.ic_load_error_vector)
             }
         }
-        includeBottomSheetLayout.bottomSheetDescriptionHeader.text = data.serverResponseData.title.toString()
+        includeBottomSheetLayout.bottomSheetDescriptionHeader.let {
+            it.text = data.serverResponseData.title.toString()
+            it.typeface = Typeface.createFromAsset(requireActivity().assets, "SpaceQuest-yOY3.ttf")
+        }
         includeBottomSheetLayout.bottomSheetDescription.text = data.serverResponseData.explanation.toString()
     }
 
