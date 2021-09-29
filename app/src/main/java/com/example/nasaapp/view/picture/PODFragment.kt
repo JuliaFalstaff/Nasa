@@ -129,10 +129,7 @@ class PODFragment : Fragment() {
                 error(R.drawable.ic_load_error_vector)
             }
         }
-        includeBottomSheetLayout.bottomSheetDescriptionHeader.let {
-            it.text = data.serverResponseData.title.toString()
-            it.typeface = Typeface.createFromAsset(requireActivity().assets, "SpaceQuest-yOY3.ttf")
-        }
+        includeBottomSheetLayout.bottomSheetDescriptionHeader.text = data.serverResponseData.title.toString()
         includeBottomSheetLayout.bottomSheetDescription.text = data.serverResponseData.explanation.toString()
     }
 

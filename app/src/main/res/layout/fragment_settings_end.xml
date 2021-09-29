@@ -17,7 +17,6 @@
         android:paddingTop="@dimen/padding_10dp"
         android:paddingEnd="@dimen/padding_10dp"
         android:paddingBottom="@dimen/padding_10dp"
-        android:text="@string/settings_header"
         android:textColor="?colorOnSecondary"
         android:textSize="@dimen/text_size_explanation"
         android:textStyle="bold"

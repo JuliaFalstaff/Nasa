@@ -1,7 +1,14 @@
 package com.example.nasaapp.view.settings
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
+import android.text.style.StrikethroughSpan
+import android.text.style.StyleSpan
 import android.transition.ChangeBounds
 import android.view.LayoutInflater
 import android.view.View
@@ -41,8 +48,17 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         settingsAnimation()
+        showSettingTitle()
         initCheckedButtonTheme()
         chooseTheme()
+    }
+
+    private fun showSettingTitle() {
+        val spannable = SpannableStringBuilder(getString(R.string.settings_header))
+        spannable.setSpan(StrikethroughSpan(), 7, 10, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(ForegroundColorSpan(Color.BLACK), 6, 10, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(StyleSpan(Typeface.BOLD), 0, spannable.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        binding.titleSettings.text = spannable
     }
 
     private fun settingsAnimation() = with(binding) {

@@ -41,7 +41,6 @@
     <string name="dialog_title">Hello, dear User!</string>
     <string name="dialog_message">This is just a game. But, please, do not explode and destroy our Planet. Save the nature. Thank you!</string>
     <string name="favourite_pictures">Here is your favourite pictures</string>
-    <string name="settings_header">Which <strike> side </strike> theme do you choose?</string>
     <string name="empty_string"> </string>
     <string name="notes_header">Notes Header</string>
     <string name="notes_description">Descriprion of note</string>
@@ -51,9 +50,5 @@
     <string name="menu_search">Search</string>
     <string name="title_note">Earth Title</string>
     <string name="title_description">description note</string>
-    <string-array name="spinner_priority">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
+    <string name="settings_header">Which side theme do you choose?</string>
 </resources>
