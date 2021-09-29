@@ -56,6 +56,15 @@
             android:text="@string/about"
             app:rippleColor="?colorPrimary" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/aboutQuoteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8dp"
+            android:layout_marginEnd="@dimen/margin_8dp"
+            android:layout_marginBottom="@dimen/margin_16dp"
+            android:textSize="@dimen/text_size_header" />
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/nasaLogoImageView"
             android:layout_width="wrap_content"
