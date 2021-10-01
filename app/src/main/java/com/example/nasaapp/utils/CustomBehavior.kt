@@ -30,11 +30,9 @@ class CustomBehavior @JvmOverloads constructor(
         val parentHeight = parent.height
         val textViewDescriptionHeight = (parentHeight - currentAppBarHeight).toInt()
         child.layoutParams?.height = textViewDescriptionHeight
-        child.layoutParams?.width = textViewDescriptionHeight.div(2)
+//        child.layoutParams?.width = textViewDescriptionHeight
         if (appBar.isLifted) {
             child.setBackgroundColor(R.color.light_apricot)
-        } else {
-            child.setBackgroundColor(R.color.white_bottom_sheet)
         }
         child.requestLayout()
         return false

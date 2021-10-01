@@ -21,7 +21,7 @@
     <string name="moon_theme">Moon Theme</string>
     <string name="default_theme">Default Theme</string>
     <string name="apply_theme">Apply Theme</string>
-    <string name="choose_theme">Choose your theme:</string>
+    <string name="choose_theme">Click it to choose</string>
     <string name="earth_tab">Earth</string>
     <string name="mars_tab">Mars</string>
     <string name="moon_tab">Moon</string>
@@ -35,4 +35,21 @@
     <string name="about">About App</string>
     <string name="solar_system">Solar System</string>
     <string name="about_title">About NASA portal</string>
+    <string name="title_picture_of_day">Hello, here is a picture of a day!</string>
+    <string name="explosion_game">Explosion Game</string>
+    <string name="dialog_apply">Yes, i will</string>
+    <string name="dialog_title">Hello, dear User!</string>
+    <string name="dialog_message">This is just a game. But, please, do not explode and destroy our Planet. Save the nature. Thank you!</string>
+    <string name="favourite_pictures">Here is your favourite pictures</string>
+    <string name="empty_string"> </string>
+    <string name="notes_header">Notes Header</string>
+    <string name="notes_description">Descriprion of note</string>
+    <string name="notes">Notes</string>
+    <string name="space_notes">Space Notes</string>
+    <string name="notes_full_description">Достижения НАСА в 2020: Астрономы подтвердили существование первой планеты вокруг белого карлика, используя данные Тесс и отставного космического телескопа Спитцера. Впервые ученые обнаружили воду на освещенной солнцем стороне Луны с помощью воздушной обсерватории НАСА София.</string>
+    <string name="menu_search">Search</string>
+    <string name="title_note">Earth Title</string>
+    <string name="title_description">description note</string>
+    <string name="settings_header">Which side theme do you choose?</string>
+    <string name="about_quote">"That's one small step for man, one giant leap for mankind." © Neil Armstrong</string>
 </resources>
