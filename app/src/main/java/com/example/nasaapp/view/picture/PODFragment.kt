@@ -1,7 +1,6 @@
 package com.example.nasaapp.view.picture
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -12,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.nasaapp.R
-import com.example.nasaapp.databinding.FragmentPodStartBinding
+import com.example.nasaapp.databinding.FragmentPodBinding
 import com.example.nasaapp.model.AppState
 import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.view.MainActivity
@@ -22,6 +21,10 @@ import com.example.nasaapp.view.settings.SettingsFragment
 import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 import com.example.nasaapp.viewmodel.PODViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -31,8 +34,8 @@ import java.util.*
 class PODFragment : Fragment() {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
-    private var _binding: FragmentPodStartBinding? = null
-    val binding: FragmentPodStartBinding
+    private var _binding: FragmentPodBinding? = null
+    val binding: FragmentPodBinding
         get() {
             return _binding!!
         }
@@ -46,7 +49,7 @@ class PODFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentPodStartBinding.inflate(inflater)
+        _binding = FragmentPodBinding.inflate(inflater)
         return binding.root
     }
 
@@ -114,16 +117,18 @@ class PODFragment : Fragment() {
     }
 
     private fun setData(data: AppState.Success) = with(binding) {
-        videoOfTheDay.visibility = View.GONE
-        videoOfTheDay.text = getString(R.string.empty_string)
+
         val url = data.serverResponseData.hdurl
         if (url.isNullOrEmpty()) {
+            customImageView.visibility = View.GONE
+            youtubePlayerView.visibility = View.VISIBLE
             val videoUrl = data.serverResponseData.url
-            customImageView.setImageResource(R.drawable.ic_no_photo_vector)
-            videoUrl?.let { showAVideoUrl(it) }
+            videoUrl?.let {
+                showAVideoUrl(it)
+            }
         } else {
-            videoOfTheDay.visibility = View.GONE
-            videoOfTheDay.text = getString(R.string.empty_string)
+            customImageView.visibility = View.VISIBLE
+            youtubePlayerView.visibility = View.GONE
             customImageView.load(url) {
                 placeholder(R.drawable.progress_animation)
                 error(R.drawable.ic_load_error_vector)
@@ -134,14 +139,13 @@ class PODFragment : Fragment() {
     }
 
     private fun showAVideoUrl(videoUrl: String) = with(binding) {
-        videoOfTheDay.visibility = View.VISIBLE
-        videoOfTheDay.text = getString(R.string.video) + videoUrl.toString()
-        videoOfTheDay.setOnClickListener {
-            val i = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse(videoUrl)
+        val videoId = videoUrl.drop(BASIC_YOUTUBE_URL).dropLast(LAST_ANCHOR_YOUTUBE_URL)
+        lifecycle.addObserver(youtubePlayerView)
+        youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                youTubePlayer.loadVideo(videoId, 0f)
             }
-            startActivity(i)
-        }
+        })
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
@@ -210,6 +214,8 @@ class PODFragment : Fragment() {
         private const val TODAY = 0
         private const val YESTERDAY = 1
         private const val BEFORE_YESTERDAY = 2
+        private const val BASIC_YOUTUBE_URL = 30
+        private const val LAST_ANCHOR_YOUTUBE_URL = 6
 
     }
 }
