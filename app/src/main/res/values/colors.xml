@@ -56,5 +56,14 @@
     <color name="textLightSecondary">#B2FFFFFF</color> <!--B2 for %70 opacity-->
     <color name="textLightDisabled">#80FFFFFF</color> <!--80 for %50 opacity-->
     <color name="textLightDisabledDEPRECATED">#4CFFFFFF</color> <!--4C for %30 opacity-->
+
+
+    <color name="default_primary">#0f4454</color>
+    <color name="default_primary_dark">#001d2b</color>
+    <color name="default_primary_variant">#416f80</color>
+    <color name="default_secondary">#00897b</color>
+    <color name="default_secondary_variant">#4ebaaa</color>
+    <color name="default_appbar">#001d2b</color>
+
 </resources>
 

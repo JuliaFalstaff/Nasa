@@ -27,7 +27,7 @@
             android:id="@+id/nasaTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?colorSecondary"
+            android:background="?colorPrimary"
             android:paddingStart="@dimen/padding_10dp"
             android:paddingEnd="@dimen/padding_10dp"
             android:text="@string/about_title"
@@ -52,7 +52,6 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin_16dp"
             android:layout_marginBottom="@dimen/margin_16dp"
-            android:background="?colorSecondary"
             android:text="@string/about"
             app:rippleColor="?colorPrimary" />
 
@@ -60,10 +59,10 @@
             android:id="@+id/aboutQuoteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/textDarkPrimary"
             android:layout_marginStart="@dimen/margin_8dp"
             android:layout_marginEnd="@dimen/margin_8dp"
             android:layout_marginBottom="@dimen/margin_16dp"
+            android:textColor="@color/textDarkPrimary"
             android:textSize="@dimen/text_size_header" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -80,10 +79,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:textColor="@color/textDarkDisabled"
             android:paddingStart="@dimen/padding_10dp"
             android:paddingEnd="@dimen/padding_10dp"
             android:text="@string/about_app_description"
+            android:textColor="@color/textDarkDisabled"
             android:textSize="@dimen/text_size_explanation"
             android:visibility="gone" />
     </LinearLayout>
