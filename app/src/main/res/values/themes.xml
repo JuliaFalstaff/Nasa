@@ -84,6 +84,11 @@
         <item name="fontFamily">@font/coda_moon</item>
     </style>
 
+    <style name="NasaApp.Splash">
+        <item name="android:windowBackground">@drawable/splash_background_drawable</item>
+
+    </style>
+
     <style name="CustomOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="counterEnabled">true</item>
         <item name="counterMaxLength">35</item>
