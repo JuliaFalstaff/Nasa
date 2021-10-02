@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -18,10 +17,15 @@ import com.example.nasaapp.model.AppState
 import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.view.MainActivity
 import com.example.nasaapp.view.bottomnavigationdrawer.BottomNavigationDrawerFragment
+import com.example.nasaapp.view.favourite.FavouriteFragment
 import com.example.nasaapp.view.settings.SettingsFragment
 import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 import com.example.nasaapp.viewmodel.PODViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -67,18 +71,15 @@ class PODFragment : Fragment() {
         chipsDayGroup.chipsGroup.check(R.id.chipToday)
         viewModel.getPODFromServer(getDay(0))
 
-
         chipsDayGroup.chipsGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.chipToday -> {
                     chipsDayGroup.chipsGroup.check(R.id.chipToday)
                     viewModel.getPODFromServer(getDay(TODAY))
-
                 }
                 R.id.chipYesterday -> {
                     chipsDayGroup.chipsGroup.check(R.id.chipYesterday)
                     viewModel.getPODFromServer(getDay(YESTERDAY))
-
                 }
                 R.id.chipDayBeforeYesterday -> {
                     chipsDayGroup.chipsGroup.check(R.id.chipDayBeforeYesterday)
@@ -117,14 +118,18 @@ class PODFragment : Fragment() {
     }
 
     private fun setData(data: AppState.Success) = with(binding) {
-        videoOfTheDay.visibility = View.GONE
+
         val url = data.serverResponseData.hdurl
         if (url.isNullOrEmpty()) {
+            customImageView.visibility = View.GONE
+            youtubePlayerView.visibility = View.VISIBLE
             val videoUrl = data.serverResponseData.url
-            customImageView.setImageResource(R.drawable.ic_no_photo_vector)
-            videoUrl?.let { showAVideoUrl(it) }
+            videoUrl?.let {
+                showAVideoUrl(it)
+            }
         } else {
-            videoOfTheDay.visibility = View.GONE
+            customImageView.visibility = View.VISIBLE
+            youtubePlayerView.visibility = View.GONE
             customImageView.load(url) {
                 placeholder(R.drawable.progress_animation)
                 error(R.drawable.ic_load_error_vector)
@@ -135,14 +140,13 @@ class PODFragment : Fragment() {
     }
 
     private fun showAVideoUrl(videoUrl: String) = with(binding) {
-        videoOfTheDay.visibility = View.VISIBLE
-        videoOfTheDay.text = getString(R.string.video) + videoUrl.toString()
-        videoOfTheDay.setOnClickListener {
-            val i = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse(videoUrl)
+        val videoId = videoUrl.drop(BASIC_YOUTUBE_URL).dropLast(LAST_ANCHOR_YOUTUBE_URL)
+        lifecycle.addObserver(youtubePlayerView)
+        youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                youTubePlayer.loadVideo(videoId, 0f)
             }
-            startActivity(i)
-        }
+        })
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
@@ -157,9 +161,9 @@ class PODFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(context, R.string.favourite, Toast.LENGTH_SHORT).show()
-            R.id.app_bar_settings -> openSettingsFragment(SettingsFragment())
-            R.id.app_bar_solar -> openSettingsFragment(SolarSystemFragment())
+            R.id.app_bar_fav -> openFragment(FavouriteFragment())
+            R.id.app_bar_settings -> openFragment(SettingsFragment())
+            R.id.app_bar_solar -> openFragment(SolarSystemFragment())
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance().show(requireActivity().supportFragmentManager, "TAG_DRAWER")
             }
@@ -167,9 +171,14 @@ class PODFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun openSettingsFragment(fragment: Fragment) {
+    private fun openFragment(fragment: Fragment) {
         activity?.supportFragmentManager?.apply {
             beginTransaction()
+                    .setCustomAnimations(
+                            R.anim.slide_in,
+                            R.anim.fade_out,
+                            R.anim.fade_in,
+                            R.anim.slide_out)
                     .replace(R.id.container, fragment)
                     .addToBackStack("")
                     .commitAllowingStateLoss()
@@ -206,6 +215,8 @@ class PODFragment : Fragment() {
         private const val TODAY = 0
         private const val YESTERDAY = 1
         private const val BEFORE_YESTERDAY = 2
+        private const val BASIC_YOUTUBE_URL = 30
+        private const val LAST_ANCHOR_YOUTUBE_URL = 6
 
     }
 }

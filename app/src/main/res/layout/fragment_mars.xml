@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.nasaapp.utils.CustomImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/marsImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:scaleType="fitXY"
+        android:scaleType="center"
         android:src="@drawable/bg_mars" />
 </FrameLayout>

@@ -32,5 +32,5 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:layout_gravity="bottom"
-        app:menu="@menu/menu_bottom_bar" />
+        app:menu="@menu/menu_bottom_bar_solar" />
 </FrameLayout>

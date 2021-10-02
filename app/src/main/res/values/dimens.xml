@@ -22,4 +22,12 @@
     <dimen name="text_size_header_new">50sp</dimen>
     <dimen name="about_layout_height">300dp</dimen>
     <dimen name="image_toolbar_height">270dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+    <dimen name="size_notes_header">35sp</dimen>
+    <dimen name="size_view_header">1px</dimen>
+    <dimen name="size_logo_notes_header">100dp</dimen>
+    <dimen name="margin_fab">15dp</dimen>
+    <dimen name="size_icon_notes">100dp</dimen>
+    <dimen name="size_options_cardview">50dp</dimen>
+    <dimen name="margin_fab_bottom_80dp">80dp</dimen>
 </resources>

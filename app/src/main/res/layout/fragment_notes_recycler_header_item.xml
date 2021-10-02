@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_4dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/headerNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_10dp"
+        android:text="@string/space_notes"
+        android:textColor="?colorSecondary"
+        android:textSize="@dimen/size_notes_header"
+        app:layout_constraintBottom_toBottomOf="@id/logoNotesImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logoNotesImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logoNotesImageView"
+        android:layout_width="@dimen/size_logo_notes_header"
+        android:layout_height="@dimen/size_logo_notes_header"
+        android:adjustViewBounds="true"
+        android:paddingBottom="@dimen/padding_10dp"
+        android:src="@drawable/nasa_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_view_header"
+        android:background="?colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/logoNotesImageView"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

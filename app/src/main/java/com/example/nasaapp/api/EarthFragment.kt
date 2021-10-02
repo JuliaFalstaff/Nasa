@@ -4,10 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.ChangeBounds
+import androidx.transition.ChangeImageTransform
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import coil.load
 import com.example.nasaapp.BuildConfig
 import com.example.nasaapp.R
@@ -18,6 +23,7 @@ import com.example.nasaapp.viewmodel.EarthViewModel
 
 class EarthFragment : Fragment() {
 
+    private var isExpanded = false
     private var _binding: FragmentEarthBinding? = null
     private lateinit var dayFromURL: String
     val binding: FragmentEarthBinding

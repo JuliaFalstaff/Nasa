@@ -40,15 +40,15 @@ class SolarSystemFragment : Fragment() {
     private fun initBottomNavigationView() {
         binding.bottomApiNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.action_home -> {
+                R.id.bottom_bar_home -> {
                     openFragment(PODFragment())
                     true
                 }
-                R.id.action_fav -> {
+                R.id.bottom_bar_fav -> {
                     Toast.makeText(context, R.string.favourite, Toast.LENGTH_SHORT).show()
                     true
                 }
-                R.id.action_settings -> {
+                R.id.bottom_bar_settings -> {
                     openFragment(SettingsFragment())
                     true
                 }

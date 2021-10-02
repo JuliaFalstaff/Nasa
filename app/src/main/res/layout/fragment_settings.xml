@@ -53,22 +53,25 @@
             app:layout_constraintTop_toBottomOf="@+id/radioButtonMoonTheme" />
     </RadioGroup>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewChooseTheme"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonChooseTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?colorPrimary"
         android:text="@string/choose_theme"
+        android:textColor="?colorOnPrimary"
         android:textSize="@dimen/text_size_explanation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="?colorSecondary" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="textViewChooseTheme" />
+        app:constraint_referenced_ids="buttonChooseTheme" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

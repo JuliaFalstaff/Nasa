@@ -16,6 +16,6 @@
     <item
         android:id="@+id/app_bar_solar"
         android:icon="@drawable/ic_system"
-        android:title="@string/settings"
+        android:title="@string/solar_system"
         app:showAsAction="always" />
 </menu>
