@@ -62,17 +62,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/videoOfTheDay"
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtubePlayerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_10dp"
-            android:layout_marginTop="@dimen/margin_60dp"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputTextLayout" />
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/customImageView"
+            app:layout_constraintEnd_toEndOf="@+id/chipsDayGroup"
+            app:layout_constraintStart_toStartOf="@+id/chipsDayGroup"
+            app:layout_constraintTop_toBottomOf="@+id/inputTextLayout"
+            app:showFullScreenButton="false" />
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrierTopImage"

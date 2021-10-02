@@ -53,4 +53,5 @@
     <string name="settings_header">Which side theme do you choose?</string>
     <string name="about_quote">"That's one small step for man, one giant leap for mankind." © Neil Armstrong</string>
     <string name="search">Search</string>
+    <string name="note_icon">Note\'s Icon</string>
 </resources>

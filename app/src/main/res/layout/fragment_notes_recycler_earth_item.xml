@@ -21,6 +21,8 @@
             android:paddingStart="@dimen/padding_10dp"
             android:paddingEnd="@dimen/padding_10dp"
             android:text="@string/notes_header"
+            android:textColor="@color/textDarkPrimary"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,6 +31,7 @@
             android:id="@+id/earthImageView"
             android:layout_width="@dimen/size_icon_notes"
             android:layout_height="@dimen/size_icon_notes"
+            android:contentDescription="@string/note_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/earthTitle"
             app:srcCompat="@drawable/bg_earth" />
@@ -41,6 +44,7 @@
             android:paddingStart="@dimen/padding_10dp"
             android:paddingEnd="@dimen/padding_10dp"
             android:text="@string/notes_description"
+            android:textColor="@color/textDarkSecondary"
             app:layout_constraintStart_toEndOf="@+id/earthImageView"
             app:layout_constraintTop_toBottomOf="@+id/earthTitle" />
 
@@ -55,6 +59,7 @@
             android:paddingEnd="@dimen/padding_10dp"
             android:src="@drawable/ic_add_note"
             android:text="@string/notes_description"
+            android:tint="@color/colorPrimaryDark"
             app:layout_constraintEnd_toStartOf="@+id/dragHandleImageView"
             app:layout_constraintTop_toBottomOf="@+id/earthTitle" />
 
@@ -68,6 +73,7 @@
             android:paddingEnd="@dimen/padding_10dp"
             android:src="@drawable/ic_delete_note"
             android:text="@string/notes_description"
+            android:tint="@color/design_default_color_error"
             app:layout_constraintStart_toStartOf="@+id/earthAddNoteImageView"
             app:layout_constraintTop_toBottomOf="@+id/earthAddNoteImageView" />
 
@@ -80,6 +86,7 @@
             android:paddingStart="@dimen/padding_10dp"
             android:paddingEnd="@dimen/padding_10dp"
             android:text="@string/notes_full_description"
+            android:textColor="@color/textDarkDisabled"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

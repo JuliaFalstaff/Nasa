@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.nasaapp.R
 import com.example.nasaapp.databinding.FragmentPodBinding
+import com.example.nasaapp.databinding.FragmentPodStartBinding
 import com.example.nasaapp.model.AppState
 import com.example.nasaapp.utils.showSnackBar
 import com.example.nasaapp.view.MainActivity
@@ -34,8 +35,8 @@ import java.util.*
 class PODFragment : Fragment() {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
-    private var _binding: FragmentPodBinding? = null
-    val binding: FragmentPodBinding
+    private var _binding: FragmentPodStartBinding? = null
+    val binding: FragmentPodStartBinding
         get() {
             return _binding!!
         }
@@ -49,7 +50,7 @@ class PODFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentPodBinding.inflate(inflater)
+        _binding = FragmentPodStartBinding.inflate(inflater)
         return binding.root
     }
 
