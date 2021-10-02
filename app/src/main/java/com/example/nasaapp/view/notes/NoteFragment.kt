@@ -11,6 +11,11 @@ import com.example.nasaapp.R
 import com.example.nasaapp.databinding.FragmentNoteBinding
 
 import com.example.nasaapp.model.data.DataNote
+import com.example.nasaapp.view.bottomnavigationdrawer.BottomNavigationDrawerFragment
+import com.example.nasaapp.view.favourite.FavouriteFragment
+import com.example.nasaapp.view.picture.PODFragment
+import com.example.nasaapp.view.settings.SettingsFragment
+import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 
 class NoteFragment : Fragment() {
 
@@ -50,7 +55,7 @@ class NoteFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_bottom_app_bar_note, menu)
-        val search = menu.findItem(R.id.action_search)
+        val search = menu.findItem(R.id.bottom_action_search_note)
         val searchView = search.actionView as SearchView
         searchView.queryHint = "Search"
 
@@ -65,6 +70,28 @@ class NoteFragment : Fragment() {
                 }
         })
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.bottom_action_home_note -> openFragment(PODFragment())
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun openFragment(fragment: Fragment) {
+        activity?.supportFragmentManager?.apply {
+            beginTransaction()
+                    .setCustomAnimations(
+                            R.anim.slide_in,
+                            R.anim.fade_out,
+                            R.anim.fade_in,
+                            R.anim.slide_out)
+                    .replace(R.id.container, fragment)
+                    .addToBackStack("")
+                    .commitAllowingStateLoss()
+        }
+    }
+
 
     private fun initNotes() {
         noteData = mutableListOf(
