@@ -9,13 +9,9 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nasaapp.R
 import com.example.nasaapp.databinding.FragmentNoteBinding
-
 import com.example.nasaapp.model.data.DataNote
-import com.example.nasaapp.view.bottomnavigationdrawer.BottomNavigationDrawerFragment
-import com.example.nasaapp.view.favourite.FavouriteFragment
+import com.example.nasaapp.view.MainActivity
 import com.example.nasaapp.view.picture.PODFragment
-import com.example.nasaapp.view.settings.SettingsFragment
-import com.example.nasaapp.view.solarsystem.SolarSystemFragment
 
 class NoteFragment : Fragment() {
 
@@ -33,6 +29,7 @@ class NoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setBottomAppBar()
         initNotes()
         adapter = RecyclerNoteAdapter(noteData,
                 object : OnListItemClickListener {
@@ -52,12 +49,17 @@ class NoteFragment : Fragment() {
 
     }
 
+    private fun setBottomAppBar() {
+        val context = activity as MainActivity
+        context.setSupportActionBar(binding.bottomNoteAppBar)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_bottom_app_bar_note, menu)
         val search = menu.findItem(R.id.bottom_action_search_note)
         val searchView = search.actionView as SearchView
-        searchView.queryHint = "Search"
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -73,7 +75,8 @@ class NoteFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.bottom_action_home_note -> openFragment(PODFragment())
+            R.id.bottom_action_search_note -> Toast.makeText(context, R.string.search, Toast.LENGTH_SHORT).show()
+            R.id.bottom_action_home_note-> openFragment(PODFragment())
         }
         return super.onOptionsItemSelected(item)
     }
@@ -92,7 +95,6 @@ class NoteFragment : Fragment() {
         }
     }
 
-
     private fun initNotes() {
         noteData = mutableListOf(
                 Pair(DataNote(getString(R.string.title_note), getString(R.string.title_description)), false),
@@ -109,7 +111,6 @@ class NoteFragment : Fragment() {
         _binding = null
     }
 }
-
 
 class ItemTouchHelperCallback(private val adapter: RecyclerNoteAdapter) :
         ItemTouchHelper.Callback() {

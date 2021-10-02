@@ -2,7 +2,6 @@ package com.example.nasaapp.view.solarsystem
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -10,8 +9,6 @@ import androidx.fragment.app.Fragment
 import com.example.nasaapp.R
 import com.example.nasaapp.api.viewpager.ViewPagerAdapter
 import com.example.nasaapp.databinding.FragmentSolarSystemBinding
-import com.example.nasaapp.view.bottomnavigationdrawer.BottomNavigationDrawerFragment
-import com.example.nasaapp.view.favourite.FavouriteFragment
 import com.example.nasaapp.view.picture.PODFragment
 import com.example.nasaapp.view.settings.SettingsFragment
 
